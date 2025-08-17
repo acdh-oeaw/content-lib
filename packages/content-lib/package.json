@@ -27,6 +27,7 @@
 		"format:fix": "prettier . --cache --cache-location ./../../.prettiercache --check --write",
 		"lint:check": "eslint .",
 		"lint:fix": "eslint . --fix",
+		"prepublishOnly": "run-s build",
 		"types:check": "tsc --noEmit",
 		"test": "exit 0"
 	},
@@ -45,6 +46,7 @@
 		"eslint-config-flat-gitignore": "catalog:",
 		"globals": "catalog:",
 		"node": "catalog:",
+		"npm-run-all2": "catalog:",
 		"prettier": "catalog:",
 		"tsdown": "catalog:",
 		"typescript": "catalog:",
