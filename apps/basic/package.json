@@ -1,0 +1,86 @@
+{
+	"name": "@acdh-oeaw/content-lib-example-basic",
+	"private": true,
+	"license": "MIT",
+	"type": "module",
+	"engines": {
+		"node": "^22 || ^24"
+	},
+	"devEngines": {
+		"runtime": {
+			"name": "node",
+			"version": ">= 22.18 < 23",
+			"onFail": "download"
+		}
+	},
+	"packageManager": "pnpm@10.14.0",
+	"scripts": {
+		"app:build": "next build",
+		"app:dev": "next dev --turbopack",
+		"build": "run-s content:build app:build",
+		"dev": "concurrently --kill-others --names \"CONTENT,APP\" --prefix-colors \"auto\" \"pnpm run content:watch\" \"pnpm run app:dev\"",
+		"content:build": "NODE_DEBUG=content-lib node ./scripts/generate-content.ts build",
+		"content:watch": "NODE_DEBUG=content-lib node ./scripts/generate-content.ts watch",
+		"format:check": "prettier . --cache --cache-location ./../../.prettiercache --check",
+		"format:fix": "prettier . --cache --cache-location ./../../.prettiercache --check --write",
+		"lint:check": "eslint .",
+		"lint:fix": "eslint . --fix",
+		"prepare": "next typegen",
+		"types:check": "tsc --noEmit",
+		"start": "next start",
+		"test:e2e": "PORT=3001 playwright test",
+		"test:e2e:update-snapshots": "PORT=3001 playwright test --update-snapshots"
+	},
+	"dependencies": {
+		"@acdh-oeaw/content-lib": "workspace:^",
+		"@acdh-oeaw/lib": "catalog:",
+		"next": "catalog:",
+		"react": "catalog:",
+		"react-dom": "catalog:",
+		"valibot": "catalog:"
+	},
+	"devDependencies": {
+		"@acdh-oeaw/eslint-config": "catalog:",
+		"@acdh-oeaw/eslint-config-next": "catalog:",
+		"@acdh-oeaw/eslint-config-node": "catalog:",
+		"@acdh-oeaw/eslint-config-playwright": "catalog:",
+		"@acdh-oeaw/eslint-config-react": "catalog:",
+		"@acdh-oeaw/eslint-config-tailwindcss": "catalog:",
+		"@acdh-oeaw/prettier-config": "catalog:",
+		"@acdh-oeaw/tsconfig": "catalog:",
+		"@mdx-js/mdx": "catalog:",
+		"@playwright/test": "catalog:",
+		"@tailwindcss/postcss": "catalog:",
+		"@types/node": "catalog:",
+		"@types/react": "catalog:",
+		"@types/react-dom": "catalog:",
+		"concurrently": "catalog:",
+		"eslint": "catalog:",
+		"eslint-config-flat-gitignore": "catalog:",
+		"globals": "catalog:",
+		"is-in-ci": "catalog:",
+		"node": "catalog:",
+		"npm-run-all2": "catalog:",
+		"prettier": "catalog:",
+		"remark-gfm": "catalog:",
+		"tailwindcss": "catalog:",
+		"to-vfile": "catalog:",
+		"typescript": "catalog:",
+		"typescript-eslint": "catalog:",
+		"vfile": "catalog:",
+		"vfile-matter": "catalog:"
+	},
+	"lint-staged": {
+		"*.@(js|ts|tsx)": [
+			"eslint --fix",
+			"prettier --cache --cache-location ./../../.prettiercache --write"
+		],
+		"*.!(js|ts|tsx)": "prettier --cache --cache-location ./../../.prettiercache --ignore-unknown --write"
+	},
+	"prettier": "@acdh-oeaw/prettier-config",
+	"postcss": {
+		"plugins": {
+			"@tailwindcss/postcss": {}
+		}
+	}
+}
