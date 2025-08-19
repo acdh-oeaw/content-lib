@@ -168,7 +168,7 @@ function serialize(value: Map<string, any>): [string, Map<string, string>] {
 
 				debug(`Adding javascript import for "${filePath}".`);
 				const identifier = addImport(filePath);
-				addFiles(filePath, value.content);
+				addFiles(filePath, `// @ts-nocheck\n${value.content}`);
 
 				return identifier;
 			}
