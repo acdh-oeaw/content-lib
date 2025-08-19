@@ -88,7 +88,7 @@ catalogs:
       specifier: 16.3.0
       version: 16.3.0
     is-in-ci:
-      specifier: ^1.0.0
+      specifier: ^2.0.0
       version: 1.0.0
     lint-staged:
       specifier: ^16.1.5
@@ -103,8 +103,8 @@ catalogs:
       specifier: 8.0.4
       version: 8.0.4
     p-limit:
-      specifier: ^7.0.0
-      version: 7.0.0
+      specifier: ^7.1.0
+      version: 7.1.0
     prettier:
       specifier: 3.6.2
       version: 3.6.2
@@ -167,9 +167,12 @@ importers:
       '@changesets/cli':
         specifier: 'catalog:'
         version: 2.29.6(@types/node@22.17.2)
+      '@playwright/test':
+        specifier: 'catalog:'
+        version: 1.54.2
       is-in-ci:
         specifier: 'catalog:'
-        version: 1.0.0
+        version: 2.0.0
       lint-staged:
         specifier: 'catalog:'
         version: 16.1.5
@@ -559,7 +562,7 @@ importers:
         version: 2.5.1
       p-limit:
         specifier: 'catalog:'
-        version: 7.0.0
+        version: 7.1.0
     devDependencies:
       '@acdh-oeaw/eslint-config':
         specifier: 'catalog:'
@@ -3682,6 +3685,11 @@ packages:
     engines: {node: '>=18'}
     hasBin: true
 
+  is-in-ci@2.0.0:
+    resolution: {integrity: sha512-cFeerHriAnhrQSbpAxL37W1wcJKUUX07HyLWZCW1URJT/ra3GyUTzBgUnh24TMVfNTV2Hij2HLxkPHFZfOZy5w==}
+    engines: {node: '>=20'}
+    hasBin: true
+
   is-map@2.0.3:
     resolution: {integrity: sha512-1Qed0/Hr2m+YqxnM09CjA2d/i6YZNfF6R2oRAOj36eUdS6qIV/huPJNSEpKbupewFs+ZsJlxsjjPbc0/afW6Lw==}
     engines: {node: '>= 0.4'}
@@ -4325,8 +4333,8 @@ packages:
     resolution: {integrity: sha512-TYOanM3wGwNGsZN2cVTYPArw454xnXj5qmWF1bEoAc4+cU/ol7GVh7odevjp1FNHduHc3KZMcFduxU5Xc6uJRQ==}
     engines: {node: '>=10'}
 
-  p-limit@7.0.0:
-    resolution: {integrity: sha512-WeCdPG5OjujcMWjSkOS0kt3bo+LmroXLmOnJ4SPhZfz5pffQxDUNcYscbZgyGwKf9r9z7gRfKjDNno5cZyQAZQ==}
+  p-limit@7.1.0:
+    resolution: {integrity: sha512-7LbrpOjbzBWFHFgRtVrIAwBwW1bB7c7n914Q2+CXr1TvOfbTrVHAEH1Ya9PwDwAoKLeiRrczymYWPwaHNOQ0vA==}
     engines: {node: '>=20'}
 
   p-locate@4.1.0:
@@ -8058,7 +8066,7 @@ snapshots:
       normalize-path: 3.0.0
       readdirp: 3.6.0
     optionalDependencies:
-      fsevents: 2.3.2
+      fsevents: 2.3.3
 
   chokidar@4.0.3:
     dependencies:
@@ -9227,6 +9235,8 @@ snapshots:
 
   is-in-ci@1.0.0: {}
 
+  is-in-ci@2.0.0: {}
+
   is-map@2.0.3: {}
 
   is-negative-zero@2.0.3: {}
@@ -10116,7 +10126,7 @@ snapshots:
     dependencies:
       yocto-queue: 0.1.0
 
-  p-limit@7.0.0:
+  p-limit@7.1.0:
     dependencies:
       yocto-queue: 1.2.1
 
