@@ -29,6 +29,7 @@
 			"dependsOn": ["build"],
 			"env": ["PORT"]
 		},
+		"test:e2e:install": {},
 		"test:e2e:update-snapshots": {
 			"dependsOn": ["build"],
 			"env": ["PORT"]

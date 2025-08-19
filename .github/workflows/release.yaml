@@ -1,13 +1,12 @@
 name: Release
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}-release
+  group: "${{ github.workflow }}-${{ github.ref }}-release"
   cancel-in-progress: true
 
 on:
-  push:
-    branches:
-      - main
+  workflow_call:
+  workflow_dispatch:
 
 jobs:
   release:
