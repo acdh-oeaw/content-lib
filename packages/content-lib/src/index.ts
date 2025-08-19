@@ -261,7 +261,7 @@ export async function createContentProcessor(config: ContentConfig): Promise<Con
 
 			for (const [id, { item }] of collection.data) {
 				if (signal?.aborted === true) {
-					debug("Aborted reeading collections...");
+					debug("Aborted reading collections.");
 					return;
 				}
 
@@ -272,7 +272,7 @@ export async function createContentProcessor(config: ContentConfig): Promise<Con
 				// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 				collection.data.get(id)!.content = content;
 
-				debug(`- Read item "${id}"...`);
+				debug(`- Read item "${id}".`);
 			}
 
 			debug(
@@ -285,7 +285,7 @@ export async function createContentProcessor(config: ContentConfig): Promise<Con
 
 			for (const [id, { content, item }] of collection.data) {
 				if (signal?.aborted === true) {
-					debug("Aborted transforming collections...");
+					debug("Aborted transforming collections.");
 					return;
 				}
 
@@ -294,7 +294,7 @@ export async function createContentProcessor(config: ContentConfig): Promise<Con
 				// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 				collection.data.get(id)!.document = document;
 
-				debug(`- Transformed item "${id}"...`);
+				debug(`- Transformed item "${id}".`);
 			}
 
 			debug(
@@ -303,12 +303,12 @@ export async function createContentProcessor(config: ContentConfig): Promise<Con
 		}
 
 		if (signal?.aborted === true) {
-			debug("Aborted writing collections...");
+			debug("Aborted writing collections.");
 			return;
 		}
 
 		for (const collection of collections) {
-			debug(`Writing collection "${collection.name}"...`);
+			debug(`Writing collection "${collection.name}".`);
 
 			// TODO: Consider combining serializing and writing to disk in one function.
 			const outputFilePath = path.join(collection.outputDirectoryPath, "index.js");
@@ -350,7 +350,7 @@ export async function createContentProcessor(config: ContentConfig): Promise<Con
 
 				collection.data.set(id, { item, content: null, document: null });
 
-				debug(`- Added item "${id}" (path: "${filePath}")...`);
+				debug(`- Added item "${id}" (path: "${filePath}").`);
 			}
 
 			debug(
@@ -408,7 +408,7 @@ export async function createContentProcessor(config: ContentConfig): Promise<Con
 						return;
 					}
 
-					debug(`- ${String(events.length)} events in collection "${collection.name}"...`);
+					debug(`- ${String(events.length)} events in collection "${collection.name}".`);
 
 					for (const event of events) {
 						// const relativeFilePath = path.relative(collection.directory, event.path);
@@ -501,7 +501,7 @@ export async function createContentProcessor(config: ContentConfig): Promise<Con
 		}
 
 		async function unsubscribe() {
-			debug("Cleaning up.");
+			debug("Cleaning up...");
 
 			if (timer != null) {
 				clearTimeout(timer);
