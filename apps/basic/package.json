@@ -26,11 +26,12 @@
 		"lint:check": "eslint .",
 		"lint:fix": "eslint . --fix",
 		"prepare": "run-s types:prepare",
-		"types:check": "tsc --noEmit",
-		"types:prepare": "next typegen",
 		"start": "next start",
 		"test:e2e": "PORT=3001 playwright test",
-		"test:e2e:update-snapshots": "PORT=3001 playwright test --update-snapshots"
+		"test:e2e:install": "PORT=3001 playwright install --with-deps",
+		"test:e2e:update-snapshots": "PORT=3001 playwright test --update-snapshots",
+		"types:check": "tsc --noEmit",
+		"types:prepare": "next typegen"
 	},
 	"dependencies": {
 		"@acdh-oeaw/content-lib": "workspace:^",

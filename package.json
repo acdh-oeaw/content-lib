@@ -21,6 +21,7 @@
 		"prepare": "is-in-ci || simple-git-hooks",
 		"test": "turbo run test",
 		"test:e2e": "turbo run test:e2e",
+		"test:e2e:install": "pnpm run --recursive --sequential test:e2e:install",
 		"types:check": "turbo run types:check"
 	},
 	"devDependencies": {
