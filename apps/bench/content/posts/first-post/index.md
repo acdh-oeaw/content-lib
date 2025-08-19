@@ -1,8 +1,8 @@
 ---
 title: The first post
 authors:
-  - doe-jane
-  - doe-john
+  - noah-harris
+  - victor-allen
 ---
 
 ## Introduction: The Infinite Canvas

@@ -1,8 +1,7 @@
 ---
 title: The second post
 authors:
-  - doe-jane
-  - doe-john
+  - paul-lee
 ---
 
 ## Introduction: The Fragmented Narrative
