@@ -5,9 +5,6 @@ const config: Config = {
 	eslint: {
 		ignoreDuringBuilds: true,
 	},
-	experimental: {
-		typedRoutes: true,
-	},
 	redirects() {
 		const redirects: Awaited<ReturnType<NonNullable<Config["redirects"]>>> = [
 			{
@@ -19,6 +16,7 @@ const config: Config = {
 
 		return Promise.resolve(redirects);
 	},
+	typedRoutes: true,
 	typescript: {
 		ignoreBuildErrors: true,
 	},

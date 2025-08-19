@@ -51,6 +51,9 @@ catalogs:
     '@mdx-js/mdx':
       specifier: ^3.1.0
       version: 3.1.0
+    '@next/eslint-plugin-next':
+      specifier: canary
+      version: 15.4.2-canary.55
     '@parcel/watcher':
       specifier: ^2.5.1
       version: 2.5.1
@@ -94,8 +97,8 @@ catalogs:
       specifier: ^16.1.5
       version: 16.1.5
     next:
-      specifier: 15.4.2-canary.44
-      version: 15.4.2-canary.44
+      specifier: canary
+      version: 15.4.2-canary.55
     node:
       specifier: ^22.18.0
       version: 22.18.0
@@ -172,7 +175,7 @@ importers:
         version: 1.54.2
       is-in-ci:
         specifier: 'catalog:'
-        version: 2.0.0
+        version: 1.0.0
       lint-staged:
         specifier: 'catalog:'
         version: 16.1.5
@@ -205,7 +208,7 @@ importers:
         version: 0.3.4
       next:
         specifier: 'catalog:'
-        version: 15.4.2-canary.44(@babel/core@7.28.3)(@playwright/test@1.54.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+        version: 15.4.2-canary.55(@babel/core@7.28.3)(@playwright/test@1.54.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       react:
         specifier: 'catalog:'
         version: 19.1.1
@@ -221,7 +224,7 @@ importers:
         version: 2.0.9(@typescript-eslint/utils@8.39.1(eslint@9.33.0(jiti@2.5.1))(typescript@5.9.2))(eslint@9.33.0(jiti@2.5.1))(globals@16.3.0)(typescript@5.9.2)
       '@acdh-oeaw/eslint-config-next':
         specifier: 'catalog:'
-        version: 2.0.21(@acdh-oeaw/eslint-config-react@2.0.13(@acdh-oeaw/eslint-config@2.0.9(@typescript-eslint/utils@8.39.1(eslint@9.33.0(jiti@2.5.1))(typescript@5.9.2))(eslint@9.33.0(jiti@2.5.1))(globals@16.3.0)(typescript@5.9.2))(eslint@9.33.0(jiti@2.5.1))(ts-api-utils@2.1.0(typescript@5.9.2))(typescript@5.9.2))(@acdh-oeaw/eslint-config@2.0.9(@typescript-eslint/utils@8.39.1(eslint@9.33.0(jiti@2.5.1))(typescript@5.9.2))(eslint@9.33.0(jiti@2.5.1))(globals@16.3.0)(typescript@5.9.2))(@next/eslint-plugin-next@15.4.6)
+        version: 2.0.21(@acdh-oeaw/eslint-config-react@2.0.13(@acdh-oeaw/eslint-config@2.0.9(@typescript-eslint/utils@8.39.1(eslint@9.33.0(jiti@2.5.1))(typescript@5.9.2))(eslint@9.33.0(jiti@2.5.1))(globals@16.3.0)(typescript@5.9.2))(eslint@9.33.0(jiti@2.5.1))(ts-api-utils@2.1.0(typescript@5.9.2))(typescript@5.9.2))(@acdh-oeaw/eslint-config@2.0.9(@typescript-eslint/utils@8.39.1(eslint@9.33.0(jiti@2.5.1))(typescript@5.9.2))(eslint@9.33.0(jiti@2.5.1))(globals@16.3.0)(typescript@5.9.2))(@next/eslint-plugin-next@15.4.2-canary.55)
       '@acdh-oeaw/eslint-config-node':
         specifier: 'catalog:'
         version: 2.0.9(@acdh-oeaw/eslint-config@2.0.9(@typescript-eslint/utils@8.39.1(eslint@9.33.0(jiti@2.5.1))(typescript@5.9.2))(eslint@9.33.0(jiti@2.5.1))(globals@16.3.0)(typescript@5.9.2))(eslint@9.33.0(jiti@2.5.1))(typescript@5.9.2)
@@ -243,6 +246,9 @@ importers:
       '@mdx-js/mdx':
         specifier: 'catalog:'
         version: 3.1.0(acorn@8.15.0)
+      '@next/eslint-plugin-next':
+        specifier: 'catalog:'
+        version: 15.4.2-canary.55
       '@playwright/test':
         specifier: 'catalog:'
         version: 1.54.2
@@ -320,7 +326,7 @@ importers:
         version: 0.3.4
       next:
         specifier: 'catalog:'
-        version: 15.4.2-canary.44(@babel/core@7.28.3)(@playwright/test@1.54.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+        version: 15.4.2-canary.55(@babel/core@7.28.3)(@playwright/test@1.54.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       react:
         specifier: 'catalog:'
         version: 19.1.1
@@ -336,7 +342,7 @@ importers:
         version: 2.0.9(@typescript-eslint/utils@8.39.1(eslint@9.33.0(jiti@2.5.1))(typescript@5.9.2))(eslint@9.33.0(jiti@2.5.1))(globals@16.3.0)(typescript@5.9.2)
       '@acdh-oeaw/eslint-config-next':
         specifier: 'catalog:'
-        version: 2.0.21(@acdh-oeaw/eslint-config-react@2.0.13(@acdh-oeaw/eslint-config@2.0.9(@typescript-eslint/utils@8.39.1(eslint@9.33.0(jiti@2.5.1))(typescript@5.9.2))(eslint@9.33.0(jiti@2.5.1))(globals@16.3.0)(typescript@5.9.2))(eslint@9.33.0(jiti@2.5.1))(ts-api-utils@2.1.0(typescript@5.9.2))(typescript@5.9.2))(@acdh-oeaw/eslint-config@2.0.9(@typescript-eslint/utils@8.39.1(eslint@9.33.0(jiti@2.5.1))(typescript@5.9.2))(eslint@9.33.0(jiti@2.5.1))(globals@16.3.0)(typescript@5.9.2))(@next/eslint-plugin-next@15.4.6)
+        version: 2.0.21(@acdh-oeaw/eslint-config-react@2.0.13(@acdh-oeaw/eslint-config@2.0.9(@typescript-eslint/utils@8.39.1(eslint@9.33.0(jiti@2.5.1))(typescript@5.9.2))(eslint@9.33.0(jiti@2.5.1))(globals@16.3.0)(typescript@5.9.2))(eslint@9.33.0(jiti@2.5.1))(ts-api-utils@2.1.0(typescript@5.9.2))(typescript@5.9.2))(@acdh-oeaw/eslint-config@2.0.9(@typescript-eslint/utils@8.39.1(eslint@9.33.0(jiti@2.5.1))(typescript@5.9.2))(eslint@9.33.0(jiti@2.5.1))(globals@16.3.0)(typescript@5.9.2))(@next/eslint-plugin-next@15.4.2-canary.55)
       '@acdh-oeaw/eslint-config-node':
         specifier: 'catalog:'
         version: 2.0.9(@acdh-oeaw/eslint-config@2.0.9(@typescript-eslint/utils@8.39.1(eslint@9.33.0(jiti@2.5.1))(typescript@5.9.2))(eslint@9.33.0(jiti@2.5.1))(globals@16.3.0)(typescript@5.9.2))(eslint@9.33.0(jiti@2.5.1))(typescript@5.9.2)
@@ -358,6 +364,9 @@ importers:
       '@mdx-js/mdx':
         specifier: 'catalog:'
         version: 3.1.0(acorn@8.15.0)
+      '@next/eslint-plugin-next':
+        specifier: 'catalog:'
+        version: 15.4.2-canary.55
       '@playwright/test':
         specifier: 'catalog:'
         version: 1.54.2
@@ -435,7 +444,7 @@ importers:
         version: 0.3.4
       next:
         specifier: 'catalog:'
-        version: 15.4.2-canary.44(@babel/core@7.28.3)(@playwright/test@1.54.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+        version: 15.4.2-canary.55(@babel/core@7.28.3)(@playwright/test@1.54.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       react:
         specifier: 'catalog:'
         version: 19.1.1
@@ -451,7 +460,7 @@ importers:
         version: 2.0.9(@typescript-eslint/utils@8.39.1(eslint@9.33.0(jiti@2.5.1))(typescript@5.9.2))(eslint@9.33.0(jiti@2.5.1))(globals@16.3.0)(typescript@5.9.2)
       '@acdh-oeaw/eslint-config-next':
         specifier: 'catalog:'
-        version: 2.0.21(@acdh-oeaw/eslint-config-react@2.0.13(@acdh-oeaw/eslint-config@2.0.9(@typescript-eslint/utils@8.39.1(eslint@9.33.0(jiti@2.5.1))(typescript@5.9.2))(eslint@9.33.0(jiti@2.5.1))(globals@16.3.0)(typescript@5.9.2))(eslint@9.33.0(jiti@2.5.1))(ts-api-utils@2.1.0(typescript@5.9.2))(typescript@5.9.2))(@acdh-oeaw/eslint-config@2.0.9(@typescript-eslint/utils@8.39.1(eslint@9.33.0(jiti@2.5.1))(typescript@5.9.2))(eslint@9.33.0(jiti@2.5.1))(globals@16.3.0)(typescript@5.9.2))(@next/eslint-plugin-next@15.4.6)
+        version: 2.0.21(@acdh-oeaw/eslint-config-react@2.0.13(@acdh-oeaw/eslint-config@2.0.9(@typescript-eslint/utils@8.39.1(eslint@9.33.0(jiti@2.5.1))(typescript@5.9.2))(eslint@9.33.0(jiti@2.5.1))(globals@16.3.0)(typescript@5.9.2))(eslint@9.33.0(jiti@2.5.1))(ts-api-utils@2.1.0(typescript@5.9.2))(typescript@5.9.2))(@acdh-oeaw/eslint-config@2.0.9(@typescript-eslint/utils@8.39.1(eslint@9.33.0(jiti@2.5.1))(typescript@5.9.2))(eslint@9.33.0(jiti@2.5.1))(globals@16.3.0)(typescript@5.9.2))(@next/eslint-plugin-next@15.4.2-canary.55)
       '@acdh-oeaw/eslint-config-node':
         specifier: 'catalog:'
         version: 2.0.9(@acdh-oeaw/eslint-config@2.0.9(@typescript-eslint/utils@8.39.1(eslint@9.33.0(jiti@2.5.1))(typescript@5.9.2))(eslint@9.33.0(jiti@2.5.1))(globals@16.3.0)(typescript@5.9.2))(eslint@9.33.0(jiti@2.5.1))(typescript@5.9.2)
@@ -472,13 +481,16 @@ importers:
         version: 1.5.1(typescript@5.9.2)
       '@keystatic/core':
         specifier: 'catalog:'
-        version: 0.5.48(next@15.4.2-canary.44(@playwright/test@1.54.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+        version: 0.5.48(next@15.4.2-canary.55(@playwright/test@1.54.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@keystatic/next':
         specifier: 'catalog:'
-        version: 5.0.4(@keystatic/core@0.5.48(next@15.4.2-canary.44(@playwright/test@1.54.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(next@15.4.2-canary.44(@playwright/test@1.54.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+        version: 5.0.4(@keystatic/core@0.5.48(next@15.4.2-canary.55(@playwright/test@1.54.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(next@15.4.2-canary.55(@playwright/test@1.54.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@mdx-js/mdx':
         specifier: 'catalog:'
         version: 3.1.0(acorn@8.15.0)
+      '@next/eslint-plugin-next':
+        specifier: 'catalog:'
+        version: 15.4.2-canary.55
       '@playwright/test':
         specifier: 'catalog:'
         version: 1.54.2
@@ -1425,56 +1437,56 @@ packages:
   '@napi-rs/wasm-runtime@1.0.3':
     resolution: {integrity: sha512-rZxtMsLwjdXkMUGC3WwsPwLNVqVqnTJT6MNIB6e+5fhMcSCPP0AOsNWuMQ5mdCq6HNjs/ZeWAEchpqeprqBD2Q==}
 
-  '@next/env@15.4.2-canary.44':
-    resolution: {integrity: sha512-r+LSxi0Sln3tYNpOygpSujKUh2XaP7OYl4ruy12ekc6wSKqbezPpE9KoQuuQttd/by4SXgc/4rVRFklwxZAqXw==}
+  '@next/env@15.4.2-canary.55':
+    resolution: {integrity: sha512-4SJCT+YY9bqOSu0uH3JCgCqR6v+PdUd8eZdCx3ipcwWBQQ1P1C0kFtSW3M80gS7nnzapMPEiQbpSfvb6gDxz1g==}
 
-  '@next/eslint-plugin-next@15.4.6':
-    resolution: {integrity: sha512-2NOu3ln+BTcpnbIDuxx6MNq+pRrCyey4WSXGaJIyt0D2TYicHeO9QrUENNjcf673n3B1s7hsiV5xBYRCK1Q8kA==}
+  '@next/eslint-plugin-next@15.4.2-canary.55':
+    resolution: {integrity: sha512-oAxG5cHD+/s/HV18wbvQPFes0TxYfdOyOrBxL4k6VNYcH11ej0HGfMwtTrvMkar1XZLVNsE8qrXhmKqrHZSd/Q==}
 
-  '@next/swc-darwin-arm64@15.4.2-canary.44':
-    resolution: {integrity: sha512-yL4ny69HEjk3EkwYw+iPgo88h+KEy6uhMGhjmdO8fG05TmNlPlanj24ePgCRP6Ims2SDmPaC4mqG2Kao63wk4g==}
+  '@next/swc-darwin-arm64@15.4.2-canary.55':
+    resolution: {integrity: sha512-f4YO0TFWTQ7i3wje3DqR/xBJ4w6T+c/1ORfFUWLmhuX8XJF8jMcQf7GmKqloOPYYzIXcX452PSV2asuub+0qxA==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [darwin]
 
-  '@next/swc-darwin-x64@15.4.2-canary.44':
-    resolution: {integrity: sha512-zh6hD5VIeRk22wjiVpaijvF08hGyYLMDVfHAVDe/HA/bka1elyanE871aWsi8Ov8HGXxhTn4RTNfmVeuyM4R9Q==}
+  '@next/swc-darwin-x64@15.4.2-canary.55':
+    resolution: {integrity: sha512-XvCueejk+r1uQ7WYLLFy13Fy3XqJwrIxmMPzQny0omIv5YPF39ArRpLDthJQKvByDByLZFWnQSmaaTWlMJ6iWw==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [darwin]
 
-  '@next/swc-linux-arm64-gnu@15.4.2-canary.44':
-    resolution: {integrity: sha512-TAJs75hfSGzjeOZFIeckvttBfCqao5P9TE1diyXFb2U+W23+X6uxDMp4QV4fZ+kWRL8DcJ9/dK3zP6SRZX3GxA==}
+  '@next/swc-linux-arm64-gnu@15.4.2-canary.55':
+    resolution: {integrity: sha512-c3EpUxuj/wL8HAeAIYKTuWCR90Cr69kYcW4k3kfmYz2gv/0I+H+HsW7fb95sA4VTnbGFvpve0YnTLjDoTzeD1A==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
 
-  '@next/swc-linux-arm64-musl@15.4.2-canary.44':
-    resolution: {integrity: sha512-pWZTzkWChZwHJ7thFxa/30dWQ7bryEtXdZ+s/SGRYduNaazMMckMVwS9r2ZywDXJEHLVreAGi4qx1pORy1MqXw==}
+  '@next/swc-linux-arm64-musl@15.4.2-canary.55':
+    resolution: {integrity: sha512-M0WsCr6ZhmjyKBwrtyYT7zA+qmKooptN+7Ogjl0KDgB8wnj/W5X7ZLgs9bc4/22726XOy1JGOgQWF0KaiEFX9Q==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
 
-  '@next/swc-linux-x64-gnu@15.4.2-canary.44':
-    resolution: {integrity: sha512-jjDmKkxeZ0RwNloMHg0U4H1Y6XUzwpxDV2oLTfOXJVh07OENB0X4fxqCuwuuvVyxdbXkWbFY1tFBNK47WkWgBw==}
+  '@next/swc-linux-x64-gnu@15.4.2-canary.55':
+    resolution: {integrity: sha512-Q3J05Hqgloji4aBmXmVXk7t3uMK1fRPmvtS7H4uCdwbSjqkkBYPDs6nE+J29jlWfEAaYNINJONXauhkajrRvAA==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
 
-  '@next/swc-linux-x64-musl@15.4.2-canary.44':
-    resolution: {integrity: sha512-xXxPeLP4J48zit8BQDo4PEs0qHFGNdYFeTkPUpqLKGwfgIIwtUIXVMnIRYdkeOVCYNfqrF7zEIO4w/+1MObHpw==}
+  '@next/swc-linux-x64-musl@15.4.2-canary.55':
+    resolution: {integrity: sha512-nUyySGsAtvaHRbJmnfUOzaSVff9WcScNmf0dJn2TvN/DVw1jcnriFZySsXFiCfv5Zu5jFmPMovXIGLjQsTMNsQ==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
 
-  '@next/swc-win32-arm64-msvc@15.4.2-canary.44':
-    resolution: {integrity: sha512-reTGdrvk1i8/H0MaNpv5DEzetcYDhrXPYfFIDjQ6KPwQpKY8EJmckCaUwWfx6tYduoH4VAp3wwDnYyQfa7s4PA==}
+  '@next/swc-win32-arm64-msvc@15.4.2-canary.55':
+    resolution: {integrity: sha512-lS+0QrgTo62a2VBaV1B65kGh7HaScPOjObt3Btv3L6fU7hApnaEg5dwVsebQx9haJuQb7IcfVU3iGP6ceY7aIg==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [win32]
 
-  '@next/swc-win32-x64-msvc@15.4.2-canary.44':
-    resolution: {integrity: sha512-+K6GDs4uousdMNC8AX0qE58/Qr8rIQ3VAcbPzQSfkYlDfZB02HoIwBpXNIOMGNjN5yAGiuoiXSKNon1QN7oGMg==}
+  '@next/swc-win32-x64-msvc@15.4.2-canary.55':
+    resolution: {integrity: sha512-1cTmGHNli01OB4Y4fLktAzopwzl1YKvhFlDZ0J2M3sTQ+IiIaZbrMAUyBq+D/aoe0t1Bk20BlIjlS067NnFIGw==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [win32]
@@ -3685,11 +3697,6 @@ packages:
     engines: {node: '>=18'}
     hasBin: true
 
-  is-in-ci@2.0.0:
-    resolution: {integrity: sha512-cFeerHriAnhrQSbpAxL37W1wcJKUUX07HyLWZCW1URJT/ra3GyUTzBgUnh24TMVfNTV2Hij2HLxkPHFZfOZy5w==}
-    engines: {node: '>=20'}
-    hasBin: true
-
   is-map@2.0.3:
     resolution: {integrity: sha512-1Qed0/Hr2m+YqxnM09CjA2d/i6YZNfF6R2oRAOj36eUdS6qIV/huPJNSEpKbupewFs+ZsJlxsjjPbc0/afW6Lw==}
     engines: {node: '>= 0.4'}
@@ -4218,8 +4225,8 @@ packages:
   natural-compare@1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
 
-  next@15.4.2-canary.44:
-    resolution: {integrity: sha512-33QAqiFlsKgelRdsW0SoN0tmWXOy9MKiXzmC4K3iG7vYz1ZlIyURqPgngaiZxMwi8xhbizJMDtPqG44fib454g==}
+  next@15.4.2-canary.55:
+    resolution: {integrity: sha512-usuYQfgxejPPM29nYjhwJxiIV010Q09yLBS6VFe+HSYtteMoRMUfdhuoQ7/eRFoa1vJvt6SNatY81RjcQDNN8w==}
     engines: {node: ^18.18.0 || ^19.8.0 || >= 20.0.0}
     hasBin: true
     peerDependencies:
@@ -5269,11 +5276,11 @@ snapshots:
     optionalDependencies:
       graphql: 16.11.0
 
-  '@acdh-oeaw/eslint-config-next@2.0.21(@acdh-oeaw/eslint-config-react@2.0.13(@acdh-oeaw/eslint-config@2.0.9(@typescript-eslint/utils@8.39.1(eslint@9.33.0(jiti@2.5.1))(typescript@5.9.2))(eslint@9.33.0(jiti@2.5.1))(globals@16.3.0)(typescript@5.9.2))(eslint@9.33.0(jiti@2.5.1))(ts-api-utils@2.1.0(typescript@5.9.2))(typescript@5.9.2))(@acdh-oeaw/eslint-config@2.0.9(@typescript-eslint/utils@8.39.1(eslint@9.33.0(jiti@2.5.1))(typescript@5.9.2))(eslint@9.33.0(jiti@2.5.1))(globals@16.3.0)(typescript@5.9.2))(@next/eslint-plugin-next@15.4.6)':
+  '@acdh-oeaw/eslint-config-next@2.0.21(@acdh-oeaw/eslint-config-react@2.0.13(@acdh-oeaw/eslint-config@2.0.9(@typescript-eslint/utils@8.39.1(eslint@9.33.0(jiti@2.5.1))(typescript@5.9.2))(eslint@9.33.0(jiti@2.5.1))(globals@16.3.0)(typescript@5.9.2))(eslint@9.33.0(jiti@2.5.1))(ts-api-utils@2.1.0(typescript@5.9.2))(typescript@5.9.2))(@acdh-oeaw/eslint-config@2.0.9(@typescript-eslint/utils@8.39.1(eslint@9.33.0(jiti@2.5.1))(typescript@5.9.2))(eslint@9.33.0(jiti@2.5.1))(globals@16.3.0)(typescript@5.9.2))(@next/eslint-plugin-next@15.4.2-canary.55)':
     dependencies:
       '@acdh-oeaw/eslint-config': 2.0.9(@typescript-eslint/utils@8.39.1(eslint@9.33.0(jiti@2.5.1))(typescript@5.9.2))(eslint@9.33.0(jiti@2.5.1))(globals@16.3.0)(typescript@5.9.2)
       '@acdh-oeaw/eslint-config-react': 2.0.13(@acdh-oeaw/eslint-config@2.0.9(@typescript-eslint/utils@8.39.1(eslint@9.33.0(jiti@2.5.1))(typescript@5.9.2))(eslint@9.33.0(jiti@2.5.1))(globals@16.3.0)(typescript@5.9.2))(eslint@9.33.0(jiti@2.5.1))(ts-api-utils@2.1.0(typescript@5.9.2))(typescript@5.9.2)
-      '@next/eslint-plugin-next': 15.4.6
+      '@next/eslint-plugin-next': 15.4.2-canary.55
 
   '@acdh-oeaw/eslint-config-node@2.0.9(@acdh-oeaw/eslint-config@2.0.9(@typescript-eslint/utils@8.39.1(eslint@9.33.0(jiti@2.5.1))(typescript@5.9.2))(eslint@9.33.0(jiti@2.5.1))(globals@16.3.0)(typescript@5.9.2))(eslint@9.33.0(jiti@2.5.1))(typescript@5.9.2)':
     dependencies:
@@ -6167,7 +6174,7 @@ snapshots:
 
   '@juggle/resize-observer@3.4.0': {}
 
-  '@keystar/ui@0.7.19(next@15.4.2-canary.44(@playwright/test@1.54.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
+  '@keystar/ui@0.7.19(next@15.4.2-canary.55(@playwright/test@1.54.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
     dependencies:
       '@babel/runtime': 7.28.3
       '@emotion/css': 11.13.5
@@ -6260,18 +6267,18 @@ snapshots:
       react: 19.1.1
       react-dom: 19.1.1(react@19.1.1)
     optionalDependencies:
-      next: 15.4.2-canary.44(@babel/core@7.28.3)(@playwright/test@1.54.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+      next: 15.4.2-canary.55(@babel/core@7.28.3)(@playwright/test@1.54.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
     transitivePeerDependencies:
       - supports-color
 
-  '@keystatic/core@0.5.48(next@15.4.2-canary.44(@playwright/test@1.54.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
+  '@keystatic/core@0.5.48(next@15.4.2-canary.55(@playwright/test@1.54.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
     dependencies:
       '@babel/runtime': 7.28.3
       '@braintree/sanitize-url': 6.0.4
       '@emotion/weak-memoize': 0.3.1
       '@floating-ui/react': 0.24.8(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@internationalized/string': 3.2.7
-      '@keystar/ui': 0.7.19(next@15.4.2-canary.44(@playwright/test@1.54.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+      '@keystar/ui': 0.7.19(next@15.4.2-canary.55(@playwright/test@1.54.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@markdoc/markdoc': 0.4.0(@types/react@19.1.10)(react@19.1.1)
       '@react-aria/focus': 3.21.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@react-aria/i18n': 3.12.11(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
@@ -6342,13 +6349,13 @@ snapshots:
       - next
       - supports-color
 
-  '@keystatic/next@5.0.4(@keystatic/core@0.5.48(next@15.4.2-canary.44(@playwright/test@1.54.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(next@15.4.2-canary.44(@playwright/test@1.54.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
+  '@keystatic/next@5.0.4(@keystatic/core@0.5.48(next@15.4.2-canary.55(@playwright/test@1.54.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(next@15.4.2-canary.55(@playwright/test@1.54.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
     dependencies:
       '@babel/runtime': 7.28.3
-      '@keystatic/core': 0.5.48(next@15.4.2-canary.44(@playwright/test@1.54.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+      '@keystatic/core': 0.5.48(next@15.4.2-canary.55(@playwright/test@1.54.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@types/react': 19.1.10
       chokidar: 3.6.0
-      next: 15.4.2-canary.44(@babel/core@7.28.3)(@playwright/test@1.54.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+      next: 15.4.2-canary.55(@babel/core@7.28.3)(@playwright/test@1.54.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       react: 19.1.1
       react-dom: 19.1.1(react@19.1.1)
       server-only: 0.0.1
@@ -6419,34 +6426,34 @@ snapshots:
       '@tybys/wasm-util': 0.10.0
     optional: true
 
-  '@next/env@15.4.2-canary.44': {}
+  '@next/env@15.4.2-canary.55': {}
 
-  '@next/eslint-plugin-next@15.4.6':
+  '@next/eslint-plugin-next@15.4.2-canary.55':
     dependencies:
       fast-glob: 3.3.1
 
-  '@next/swc-darwin-arm64@15.4.2-canary.44':
+  '@next/swc-darwin-arm64@15.4.2-canary.55':
     optional: true
 
-  '@next/swc-darwin-x64@15.4.2-canary.44':
+  '@next/swc-darwin-x64@15.4.2-canary.55':
     optional: true
 
-  '@next/swc-linux-arm64-gnu@15.4.2-canary.44':
+  '@next/swc-linux-arm64-gnu@15.4.2-canary.55':
     optional: true
 
-  '@next/swc-linux-arm64-musl@15.4.2-canary.44':
+  '@next/swc-linux-arm64-musl@15.4.2-canary.55':
     optional: true
 
-  '@next/swc-linux-x64-gnu@15.4.2-canary.44':
+  '@next/swc-linux-x64-gnu@15.4.2-canary.55':
     optional: true
 
-  '@next/swc-linux-x64-musl@15.4.2-canary.44':
+  '@next/swc-linux-x64-musl@15.4.2-canary.55':
     optional: true
 
-  '@next/swc-win32-arm64-msvc@15.4.2-canary.44':
+  '@next/swc-win32-arm64-msvc@15.4.2-canary.55':
     optional: true
 
-  '@next/swc-win32-x64-msvc@15.4.2-canary.44':
+  '@next/swc-win32-x64-msvc@15.4.2-canary.55':
     optional: true
 
   '@nodelib/fs.scandir@2.1.5':
@@ -6533,7 +6540,7 @@ snapshots:
 
   '@quansync/fs@0.1.4':
     dependencies:
-      quansync: 0.2.10
+      quansync: 0.2.11
 
   '@react-aria/actiongroup@3.7.19(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
     dependencies:
@@ -9235,8 +9242,6 @@ snapshots:
 
   is-in-ci@1.0.0: {}
 
-  is-in-ci@2.0.0: {}
-
   is-map@2.0.3: {}
 
   is-negative-zero@2.0.3: {}
@@ -10002,9 +10007,9 @@ snapshots:
 
   natural-compare@1.4.0: {}
 
-  next@15.4.2-canary.44(@babel/core@7.28.3)(@playwright/test@1.54.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1):
+  next@15.4.2-canary.55(@babel/core@7.28.3)(@playwright/test@1.54.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1):
     dependencies:
-      '@next/env': 15.4.2-canary.44
+      '@next/env': 15.4.2-canary.55
       '@swc/helpers': 0.5.15
       caniuse-lite: 1.0.30001735
       postcss: 8.4.31
@@ -10012,14 +10017,14 @@ snapshots:
       react-dom: 19.1.1(react@19.1.1)
       styled-jsx: 5.1.6(@babel/core@7.28.3)(react@19.1.1)
     optionalDependencies:
-      '@next/swc-darwin-arm64': 15.4.2-canary.44
-      '@next/swc-darwin-x64': 15.4.2-canary.44
-      '@next/swc-linux-arm64-gnu': 15.4.2-canary.44
-      '@next/swc-linux-arm64-musl': 15.4.2-canary.44
-      '@next/swc-linux-x64-gnu': 15.4.2-canary.44
-      '@next/swc-linux-x64-musl': 15.4.2-canary.44
-      '@next/swc-win32-arm64-msvc': 15.4.2-canary.44
-      '@next/swc-win32-x64-msvc': 15.4.2-canary.44
+      '@next/swc-darwin-arm64': 15.4.2-canary.55
+      '@next/swc-darwin-x64': 15.4.2-canary.55
+      '@next/swc-linux-arm64-gnu': 15.4.2-canary.55
+      '@next/swc-linux-arm64-musl': 15.4.2-canary.55
+      '@next/swc-linux-x64-gnu': 15.4.2-canary.55
+      '@next/swc-linux-x64-musl': 15.4.2-canary.55
+      '@next/swc-win32-arm64-msvc': 15.4.2-canary.55
+      '@next/swc-win32-x64-msvc': 15.4.2-canary.55
       '@playwright/test': 1.54.2
       sharp: 0.34.3
     transitivePeerDependencies:

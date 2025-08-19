@@ -4,9 +4,7 @@ const config: Config = {
 	eslint: {
 		ignoreDuringBuilds: true,
 	},
-	experimental: {
-		typedRoutes: true,
-	},
+	typedRoutes: true,
 	typescript: {
 		ignoreBuildErrors: true,
 	},
