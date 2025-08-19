@@ -37,6 +37,7 @@ catalog:
   next: 15.4.2-canary.44
   node: ^22.18.0
   npm-run-all2: 8.0.4
+  p-limit: ^7.0.0
   prettier: 3.6.2
   react: ^19.1.1
   react-dom: ^19.1.1

@@ -33,7 +33,8 @@
 	},
 	"dependencies": {
 		"@acdh-oeaw/lib": "catalog:",
-		"@parcel/watcher": "catalog:"
+		"@parcel/watcher": "catalog:",
+		"p-limit": "catalog:"
 	},
 	"devDependencies": {
 		"@acdh-oeaw/eslint-config": "catalog:",
