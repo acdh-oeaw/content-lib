@@ -242,7 +242,10 @@ export async function createContentProcessor(config: ContentConfig): Promise<Con
 	for (const collection of config.collections) {
 		const absoluteDirectoryPath = addTrailingSlash(path.resolve(collection.directory));
 
-		const outputDirectoryPath = path.join(outputDirectoryBasePath, collection.name);
+		const outputDirectoryPath = path.join(
+			outputDirectoryBasePath,
+			collection.name.toLowerCase().replaceAll(/[^a-z0-9_-]/g, "-"),
+		);
 		await fs.mkdir(outputDirectoryPath, { recursive: true });
 
 		collections.push({
