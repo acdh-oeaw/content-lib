@@ -21,11 +21,13 @@ catalog:
   '@parcel/watcher': ^2.5.1
   '@playwright/test': ^1.54.2
   '@tailwindcss/postcss': ^4.1.12
+  '@types/mdx': ^2.0.13
   '@types/node': ^22.17.2
   '@types/react': ^19.1.10
   '@types/react-dom': ^19.1.7
   concurrently: 9.2.0
   devalue: ^5.1.1
+  dotenv-cli: 10.0.0
   es-module-lexer: ^1.7.0
   eslint: 9.33.0
   eslint-config-flat-gitignore: 2.1.0
@@ -38,11 +40,13 @@ catalog:
   prettier: 3.6.2
   react: ^19.1.1
   react-dom: ^19.1.1
+  remark-frontmatter: ^5.0.0
   remark-gfm: ^4.0.1
   simple-git-hooks: ^2.13.1
   tailwindcss: ^4.1.12
   to-vfile: ^8.0.0
   tsdown: ^0.14.1
+  tsx: 4.20.4
   turbo: ^2.5.6
   typescript: ^5.9.2
   typescript-eslint: 8.39.1
@@ -55,6 +59,7 @@ catalogMode: strict
 onlyBuiltDependencies:
   - '@parcel/watcher'
   - '@tailwindcss/oxide'
+  - esbuild
   - node
   - sharp
   - simple-git-hooks

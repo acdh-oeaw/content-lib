@@ -2,28 +2,28 @@ import { assert } from "@acdh-oeaw/lib";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 
-import { people, posts } from "@/lib/content";
+import { client } from "@/lib/content/client";
 
 interface PostPageProps extends PageProps<"/[id]"> {}
 
 export default async function PostPage(props: Readonly<PostPageProps>): Promise<ReactNode> {
 	const { id } = await props.params;
 
-	const post = posts.get(id);
+	const post = client.posts.get(id);
 
 	if (!post) {
 		notFound();
 	}
 
-	const { title } = post.document.metadata;
+	const { title } = post.metadata;
 
-	const authors = post.document.metadata.authors.map((id) => {
-		const author = people.get(id);
+	const authors = post.metadata.authors.map((id) => {
+		const author = client.people.get(id);
 		assert(author, `Invalid person "${id}".`);
-		return author.document.metadata.name;
+		return author.metadata.name;
 	});
 
-	const Content = post.document.content;
+	const Content = post.content;
 
 	const list = new Intl.ListFormat("en");
 
