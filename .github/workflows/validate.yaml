@@ -63,5 +63,5 @@ jobs:
     secrets: inherit
     # https://docs.github.com/en/actions/using-workflows/reusing-workflows#access-and-permissions
     permissions:
-      contents: read
-      packages: write
+      contents: write
+      pull-requests: write
