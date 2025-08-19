@@ -27,9 +27,9 @@
 		"lint:fix": "eslint . --fix",
 		"prepare": "run-s types:prepare",
 		"start": "next start",
-		"test:e2e": "PORT=3002 playwright test",
-		"test:e2e:install": "PORT=3001 playwright install --with-deps",
-		"test:e2e:update-snapshots": "PORT=3002 playwright test --update-snapshots",
+		"test:e2e": "PORT=3003 playwright test",
+		"test:e2e:install": "playwright install --with-deps",
+		"test:e2e:update-snapshots": "PORT=3003 playwright test --update-snapshots",
 		"types:check": "tsc --noEmit",
 		"types:prepare": "next typegen"
 	},
