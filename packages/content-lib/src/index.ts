@@ -1,10 +1,12 @@
 import * as crypto from "node:crypto";
 import * as fs from "node:fs/promises";
+import { availableParallelism } from "node:os";
 import * as path from "node:path";
 import { debuglog } from "node:util";
 
 import { addTrailingSlash, log } from "@acdh-oeaw/lib";
 import * as watcher from "@parcel/watcher";
+import plimit from "p-limit";
 
 //
 
@@ -226,6 +228,10 @@ export interface ContentProcessor {
 export async function createContentProcessor(config: ContentConfig): Promise<ContentProcessor> {
 	debug("Creating content processor...\n");
 
+	const concurrency = availableParallelism();
+	const limit = plimit(concurrency);
+	debug(`Concurrency: ${String(concurrency)}.\n`);
+
 	const outputDirectoryBasePath = path.join(process.cwd(), ".content", "generated");
 
 	debug("Clearing output directory...\n");
@@ -262,9 +268,10 @@ export async function createContentProcessor(config: ContentConfig): Promise<Con
 		for (const collection of collections) {
 			debug(`Reading collection "${collection.name}"...`);
 
-			for (const [id, { item }] of collection.data) {
+			await limit.map(Array.from(collection.data), async ([id, { item }]) => {
 				if (signal?.aborted === true) {
 					debug("Aborted reading collections.");
+					limit.clearQueue();
 					return;
 				}
 
@@ -276,7 +283,7 @@ export async function createContentProcessor(config: ContentConfig): Promise<Con
 				collection.data.get(id)!.content = content;
 
 				debug(`- Read item "${id}".`);
-			}
+			});
 
 			debug(
 				`Done reading ${String(collection.data.size)} item(s) in collection "${collection.name}".\n`,
@@ -286,9 +293,10 @@ export async function createContentProcessor(config: ContentConfig): Promise<Con
 		for (const collection of collections) {
 			debug(`Transforming collection "${collection.name}"...`);
 
-			for (const [id, { content, item }] of collection.data) {
+			await limit.map(Array.from(collection.data), async ([id, { content, item }]) => {
 				if (signal?.aborted === true) {
 					debug("Aborted transforming collections.");
+					limit.clearQueue();
 					return;
 				}
 
@@ -298,7 +306,7 @@ export async function createContentProcessor(config: ContentConfig): Promise<Con
 				collection.data.get(id)!.document = document;
 
 				debug(`- Transformed item "${id}".`);
-			}
+			});
 
 			debug(
 				`Done transforming ${String(collection.data.size)} item(s) in collection "${collection.name}".\n`,
@@ -314,13 +322,13 @@ export async function createContentProcessor(config: ContentConfig): Promise<Con
 			debug(`Writing collection "${collection.name}".`);
 
 			// TODO: Consider combining serializing and writing to disk in one function.
-			const outputFilePath = path.join(collection.outputDirectoryPath, "index.js");
 			const [serialized, files] = serialize(collection.data);
-			await fs.writeFile(outputFilePath, serialized, { encoding: "utf-8" });
-			for (const [filePath, fileContent] of files) {
+			files.set("index.js", serialized);
+
+			await limit.map(Array.from(files), async ([filePath, fileContent]) => {
 				const outputFilePath = path.join(collection.outputDirectoryPath, filePath);
 				await fs.writeFile(outputFilePath, fileContent, { encoding: "utf-8" });
-			}
+			});
 		}
 	}
 
