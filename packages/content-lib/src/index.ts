@@ -226,7 +226,7 @@ export interface ContentProcessor {
 	watch: () => Promise<Set<watcher.AsyncSubscription>>;
 }
 
-export function createContentProcessor(config: ContentConfig): ContentProcessor {
+export async function createContentProcessor(config: ContentConfig): Promise<ContentProcessor> {
 	debug("Creating content processor...\n");
 
 	const concurrency = availableParallelism();
@@ -246,6 +246,9 @@ export function createContentProcessor(config: ContentConfig): ContentProcessor 
 
 	for (const collection of config.collections) {
 		const absoluteDirectoryPath = addTrailingSlash(path.resolve(collection.directory));
+
+		/** Ensure directory exists, which is expected by `@parcel/watcher`. */
+		await fs.mkdir(absoluteDirectoryPath, { recursive: true });
 
 		const outputDirectoryPath = path.join(
 			outputDirectoryBasePath,
