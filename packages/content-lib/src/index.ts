@@ -225,7 +225,7 @@ export interface ContentProcessor {
 	watch: () => Promise<Set<watcher.AsyncSubscription>>;
 }
 
-export async function createContentProcessor(config: ContentConfig): Promise<ContentProcessor> {
+export function createContentProcessor(config: ContentConfig): ContentProcessor {
 	debug("Creating content processor...\n");
 
 	const concurrency = availableParallelism();
@@ -233,9 +233,6 @@ export async function createContentProcessor(config: ContentConfig): Promise<Con
 	debug(`Concurrency: ${String(concurrency)}.\n`);
 
 	const outputDirectoryBasePath = path.join(process.cwd(), ".content", "generated");
-
-	debug("Clearing output directory...\n");
-	await fs.rm(outputDirectoryBasePath, { force: true, recursive: true });
 
 	const collections: Array<Collection> = [];
 
@@ -252,7 +249,6 @@ export async function createContentProcessor(config: ContentConfig): Promise<Con
 			outputDirectoryBasePath,
 			collection.name.toLowerCase().replaceAll(/[^a-z0-9_-]/g, "-"),
 		);
-		await fs.mkdir(outputDirectoryPath, { recursive: true });
 
 		collections.push({
 			...collection,
@@ -318,8 +314,14 @@ export async function createContentProcessor(config: ContentConfig): Promise<Con
 			return;
 		}
 
+		debug("Clearing output directory...\n");
+		await fs.rm(outputDirectoryBasePath, { force: true, recursive: true });
+
 		for (const collection of collections) {
 			debug(`Writing collection "${collection.name}".`);
+
+			debug(`Creating output directory for "${collection.name}".`);
+			await fs.mkdir(collection.outputDirectoryPath, { recursive: true });
 
 			// TODO: Consider combining serializing and writing to disk in one function.
 			const [serialized, files] = serialize(collection.data);
