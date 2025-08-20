@@ -48,6 +48,7 @@ interface CollectionItem {
 }
 
 interface TransformContext {
+	collections: Array<Collection>;
 	createImportDeclaration: (path: string) => ImportDeclaration;
 	createJavaScriptImport: (content: string) => JavaScriptImport;
 	createJsonImport: (content: string) => JsonImport;
@@ -240,6 +241,7 @@ export async function createContentProcessor(config: ContentConfig): Promise<Con
 	const collections: Array<Collection> = [];
 
 	const context: TransformContext = {
+		collections,
 		createImportDeclaration,
 		createJavaScriptImport,
 		createJsonImport,
