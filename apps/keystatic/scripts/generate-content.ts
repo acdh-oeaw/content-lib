@@ -16,7 +16,7 @@ async function generate(): Promise<void> {
 	const { positionals } = parseArgs({ allowPositionals: true });
 	const mode = v.parse(positionalArgsSchema, positionals.at(0));
 
-	const processor = createContentProcessor(config);
+	const processor = await createContentProcessor(config);
 
 	async function build() {
 		log.info("Processing...");
