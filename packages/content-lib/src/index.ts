@@ -202,6 +202,10 @@ function serialize(value: Map<string, any>): [string, Map<string, string>] {
 		result += "\n\n";
 	}
 
+	if (value.size === 0) {
+		result += "/** @type {Map<string, never>} */\n";
+	}
+
 	result += `const items = new Map(${json});\n\nexport default items;`;
 
 	return [result, files];
