@@ -1,5 +1,35 @@
 # @acdh-oeaw/content-lib
 
+## 0.1.0
+
+### Minor Changes
+
+- [#21](https://github.com/acdh-oeaw/content-lib/pull/21)
+  [`cedbb63`](https://github.com/acdh-oeaw/content-lib/commit/cedbb63b926e00c5d8bc5acec97f1da2a293927c)
+  Thanks [@stefanprobst](https://github.com/stefanprobst)! - provide collections to transform
+  context
+
+- [#27](https://github.com/acdh-oeaw/content-lib/pull/27)
+  [`12e7246`](https://github.com/acdh-oeaw/content-lib/commit/12e7246fbb070f784a67bf4329c63b0aeb2ac0ef)
+  Thanks [@stefanprobst](https://github.com/stefanprobst)! - read config from config file
+
+- [#20](https://github.com/acdh-oeaw/content-lib/pull/20)
+  [`7246360`](https://github.com/acdh-oeaw/content-lib/commit/7246360c43cef65977d99422ec4b69ef1dcfd0a1)
+  Thanks [@stefanprobst](https://github.com/stefanprobst)! - only clear output folder before writing
+  new output
+
+- [#27](https://github.com/acdh-oeaw/content-lib/pull/27)
+  [`12e7246`](https://github.com/acdh-oeaw/content-lib/commit/12e7246fbb070f784a67bf4329c63b0aeb2ac0ef)
+  Thanks [@stefanprobst](https://github.com/stefanprobst)! - generate .d.ts files per collection and
+  replace module import types
+
+### Patch Changes
+
+- [#23](https://github.com/acdh-oeaw/content-lib/pull/23)
+  [`2cd95cd`](https://github.com/acdh-oeaw/content-lib/commit/2cd95cd3abba1cd9adc04fbe2e04dce6617bda23)
+  Thanks [@stefanprobst](https://github.com/stefanprobst)! - ensure directory exists for file
+  watcher
+
 ## 0.0.2
 
 ### Patch Changes
