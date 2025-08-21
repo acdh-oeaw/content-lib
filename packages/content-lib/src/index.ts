@@ -155,9 +155,13 @@ type Simplify<T> = { [K in keyof T]: T[K] } & {};
 type Replace<T> = {
 	[K in keyof T]: T[K] extends JavaScriptImport<infer U>
 		? U
-		: T[K] extends object
-			? Simplify<Replace<T[K]>>
-			: T[K];
+		: T[K] extends JsonImport<infer U>
+			? U
+			: T[K] extends ImportDeclaration<infer U>
+				? U
+				: T[K] extends object
+					? Simplify<Replace<T[K]>>
+					: T[K];
 };
 
 export type CollectionEntry<TCollection extends Collection> = Simplify<{
