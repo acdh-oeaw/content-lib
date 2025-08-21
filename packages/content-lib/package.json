@@ -34,7 +34,8 @@
 	"dependencies": {
 		"@acdh-oeaw/lib": "catalog:",
 		"@parcel/watcher": "catalog:",
-		"p-limit": "catalog:"
+		"p-limit": "catalog:",
+		"pluralize": "catalog:"
 	},
 	"devDependencies": {
 		"@acdh-oeaw/eslint-config": "catalog:",
@@ -43,6 +44,7 @@
 		"@acdh-oeaw/tsconfig": "catalog:",
 		"@acdh-oeaw/tsconfig-lib": "catalog:",
 		"@types/node": "catalog:",
+		"@types/pluralize": "catalog:",
 		"eslint": "catalog:",
 		"eslint-config-flat-gitignore": "catalog:",
 		"globals": "catalog:",

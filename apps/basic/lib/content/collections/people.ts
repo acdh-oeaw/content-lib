@@ -1,5 +1,6 @@
 import { createCollection } from "@acdh-oeaw/content-lib";
 import { compile } from "@mdx-js/mdx";
+import type { MDXContent } from "mdx/types";
 import withGfm from "remark-gfm";
 import { read } from "to-vfile";
 import * as v from "valibot";
@@ -32,7 +33,7 @@ export const people = createCollection({
 		);
 		const metadata = data.metadata;
 		const content = String(vfile);
-		const module = context.createJavaScriptImport(content);
+		const module = context.createJavaScriptImport<MDXContent>(content);
 		return { content: module, metadata, id: item.id };
 	},
 });

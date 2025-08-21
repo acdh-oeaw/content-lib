@@ -1,3 +1,4 @@
+import empty from "@content/empty";
 import people from "@content/people";
 import posts from "@content/posts";
 
@@ -51,6 +52,7 @@ function createCollectionClient<T extends { document: unknown }>(
 // }
 
 export const client = {
+	empty: createCollectionClient(empty),
 	people: createCollectionClient(people),
 	posts: createCollectionClient(posts),
 };

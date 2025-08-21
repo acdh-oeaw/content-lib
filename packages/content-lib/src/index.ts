@@ -2,11 +2,13 @@ import * as crypto from "node:crypto";
 import * as fs from "node:fs/promises";
 import { availableParallelism } from "node:os";
 import * as path from "node:path";
+import { pathToFileURL } from "node:url";
 import { debuglog } from "node:util";
 
-import { addTrailingSlash, log } from "@acdh-oeaw/lib";
+import { addTrailingSlash, capitalize, log } from "@acdh-oeaw/lib";
 import * as watcher from "@parcel/watcher";
 import plimit from "p-limit";
+import pluralize from "pluralize";
 
 //
 
@@ -49,14 +51,19 @@ interface CollectionItem {
 
 interface TransformContext {
 	collections: Array<Collection>;
-	createImportDeclaration: (path: string) => ImportDeclaration;
-	createJavaScriptImport: (content: string) => JavaScriptImport;
-	createJsonImport: (content: string) => JsonImport;
+	createImportDeclaration: <T>(path: string) => ImportDeclaration<T>;
+	createJavaScriptImport: <T>(content: string) => JavaScriptImport<T>;
+	createJsonImport: <T>(content: string) => JsonImport<T>;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export interface CollectionConfig<TCollectionItemContent = any, TCollectionDocument = any> {
-	name: string;
+export interface CollectionConfig<
+	TCollectionName extends string = string,
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	TCollectionItemContent = any,
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	TCollectionDocument = any,
+> {
+	name: TCollectionName;
 	directory: string;
 	include: NonEmptyReadonlyArray<GlobString>;
 	exclude?: ReadonlyArray<GlobString>;
@@ -68,9 +75,13 @@ export interface CollectionConfig<TCollectionItemContent = any, TCollectionDocum
 	) => MaybePromise<TCollectionDocument>;
 }
 
-export function createCollection<TCollectionItemContent, TCollectionDocument>(
-	config: CollectionConfig<TCollectionItemContent, TCollectionDocument>,
-): CollectionConfig<TCollectionItemContent, TCollectionDocument> {
+export function createCollection<
+	TCollectionName extends string,
+	TCollectionItemContent,
+	TCollectionDocument,
+>(
+	config: CollectionConfig<TCollectionName, TCollectionItemContent, TCollectionDocument>,
+): CollectionConfig<TCollectionName, TCollectionItemContent, TCollectionDocument> {
 	return config;
 }
 
@@ -90,7 +101,9 @@ export function createConfig<T extends ContentConfig>(config: T): T {
 
 //
 
-class ImportDeclaration {
+class ImportDeclaration<T> {
+	private __brand!: never;
+	value!: T;
 	path: string;
 
 	constructor(path: string) {
@@ -98,11 +111,13 @@ class ImportDeclaration {
 	}
 }
 
-function createImportDeclaration(path: string): ImportDeclaration {
-	return new ImportDeclaration(path);
+function createImportDeclaration<T>(path: string): ImportDeclaration<T> {
+	return new ImportDeclaration<T>(path);
 }
 
-class JavaScriptImport {
+class JavaScriptImport<T> {
+	private __brand!: never;
+	value!: T;
 	content: string;
 
 	constructor(content: string) {
@@ -110,11 +125,13 @@ class JavaScriptImport {
 	}
 }
 
-function createJavaScriptImport(content: string): JavaScriptImport {
-	return new JavaScriptImport(content);
+function createJavaScriptImport<T>(content: string): JavaScriptImport<T> {
+	return new JavaScriptImport<T>(content);
 }
 
-class JsonImport {
+class JsonImport<T> {
+	private __brand!: never;
+	value!: T;
 	content: string;
 
 	constructor(content: string) {
@@ -122,17 +139,44 @@ class JsonImport {
 	}
 }
 
-function createJsonImport(content: string): JsonImport {
-	return new JsonImport(content);
+function createJsonImport<T>(content: string): JsonImport<T> {
+	return new JsonImport<T>(content);
 }
+
+//
+
+export type GetCollection<TConfig extends ContentConfig, TName extends string> = Extract<
+	TConfig["collections"][number],
+	{ name: TName }
+>;
+
+type Simplify<T> = { [K in keyof T]: T[K] } & {};
+
+type Replace<T> = {
+	[K in keyof T]: T[K] extends JavaScriptImport<infer U>
+		? U
+		: T[K] extends object
+			? Simplify<Replace<T[K]>>
+			: T[K];
+};
+
+export type CollectionEntry<TCollection extends Collection> = Simplify<{
+	item: { id: string };
+	content: Simplify<Awaited<ReturnType<TCollection["read"]>>>;
+	document: Simplify<Replace<Awaited<ReturnType<TCollection["transform"]>>>>;
+}>;
 
 //
 
 const prefix = "__i__";
 const re = new RegExp(`"(${prefix}\\d+)"`, "g");
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function serialize(value: Map<string, any>): [string, Map<string, string>] {
+function serialize(
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	value: Map<string, any>,
+	contentProcessorConfigFilePath: string,
+	collectionName: string,
+): Map<string, string> {
 	debug("Serializing...\n");
 
 	const imports: Array<string> = [];
@@ -202,9 +246,29 @@ function serialize(value: Map<string, any>): [string, Map<string, string>] {
 		result += "\n\n";
 	}
 
-	result += `const items = new Map(${json});\n\nexport default items;`;
+	result += [`const items = new Map(${json});`, "export default items;"].join("\n\n");
 
-	return [result, files];
+	files.set("index.js", result);
+
+	// eslint-disable-next-line import-x/no-named-as-default-member
+	const typeName = capitalize(pluralize.singular(collectionName));
+
+	files.set(
+		"index.d.ts",
+		[
+			`import type { GetCollection, CollectionEntry } from "@acdh-oeaw/content-lib";`,
+			"",
+			`import type { config } from "${contentProcessorConfigFilePath}";`,
+			"",
+			`type Collection = GetCollection<typeof config, "${collectionName}">;`,
+			`type ${typeName} = CollectionEntry<Collection>;`,
+			"",
+			`declare const items: Map<string, ${typeName}>;`,
+			`export { type ${typeName}, items as default };`,
+		].join("\n"),
+	);
+
+	return files;
 }
 
 //
@@ -221,13 +285,29 @@ interface BuildStats {
 	documents: number;
 }
 
+export interface ContentProcessorConfig {
+	/** Path to config file, relative to `process.cwd()`, which provides a named export `config`. */
+	configFilePath: string;
+}
+
 export interface ContentProcessor {
 	build: () => Promise<BuildStats>;
 	watch: () => Promise<Set<watcher.AsyncSubscription>>;
 }
 
-export async function createContentProcessor(config: ContentConfig): Promise<ContentProcessor> {
+export async function createContentProcessor(
+	contentProcessorConfig: ContentProcessorConfig,
+): Promise<ContentProcessor> {
 	debug("Creating content processor...\n");
+
+	debug("Reading config file...");
+	const contentProcessorConfigUrl = pathToFileURL(
+		path.resolve(contentProcessorConfig.configFilePath),
+	);
+	contentProcessorConfigUrl.searchParams.set("cache-key", String(Date.now()));
+	const contentProcessorConfigFilePath = String(contentProcessorConfigUrl);
+	const { config } = (await import(contentProcessorConfigFilePath)) as { config: ContentConfig }; // TODO: validate
+	debug(`Done reading config file "${contentProcessorConfigFilePath}".`);
 
 	const concurrency = availableParallelism();
 	const limit = plimit(concurrency);
@@ -328,9 +408,11 @@ export async function createContentProcessor(config: ContentConfig): Promise<Con
 			debug(`Creating output directory for "${collection.name}".`);
 			await fs.mkdir(collection.outputDirectoryPath, { recursive: true });
 
-			// TODO: Consider combining serializing and writing to disk in one function.
-			const [serialized, files] = serialize(collection.data);
-			files.set("index.js", serialized);
+			const files = serialize(
+				collection.data,
+				path.relative(collection.outputDirectoryPath, contentProcessorConfig.configFilePath),
+				collection.name,
+			);
 
 			await limit.map(Array.from(files), async ([filePath, fileContent]) => {
 				const outputFilePath = path.join(collection.outputDirectoryPath, filePath);

@@ -6,17 +6,16 @@ import { read } from "to-vfile";
 import * as v from "valibot";
 import { matter } from "vfile-matter";
 
-export const posts = createCollection({
-	name: "posts",
-	directory: "./content/posts/",
-	include: ["*/index.md"],
+export const empty = createCollection({
+	name: "empty",
+	directory: "./content/empty/",
+	include: ["*.md"],
 	async read(item) {
 		const vfile = await read(item.absoluteFilePath);
 		matter(vfile, { strip: true });
 		const metadata = v.parse(
 			v.object({
-				title: v.pipe(v.string(), v.nonEmpty()),
-				authors: v.pipe(v.array(v.pipe(v.string(), v.nonEmpty())), v.minLength(1)),
+				name: v.pipe(v.string(), v.nonEmpty()),
 			}),
 			vfile.data.matter,
 		);
