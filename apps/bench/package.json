@@ -53,6 +53,7 @@
 		"@next/eslint-plugin-next": "catalog:",
 		"@playwright/test": "catalog:",
 		"@tailwindcss/postcss": "catalog:",
+		"@types/mdx": "catalog:",
 		"@types/node": "catalog:",
 		"@types/react": "catalog:",
 		"@types/react-dom": "catalog:",

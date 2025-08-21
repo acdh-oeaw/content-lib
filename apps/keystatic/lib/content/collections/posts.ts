@@ -1,5 +1,6 @@
 import { createCollection } from "@acdh-oeaw/content-lib";
 import { compile } from "@mdx-js/mdx";
+import type { MDXContent } from "mdx/types";
 import withGfm from "remark-gfm";
 import { VFile } from "vfile";
 
@@ -20,7 +21,7 @@ export const posts = createCollection({
 			jsx: true,
 			remarkPlugins: [withGfm],
 		});
-		const module = context.createJavaScriptImport(String(output));
+		const module = context.createJavaScriptImport<MDXContent>(String(output));
 		return { id: item.id, content: module, metadata };
 	},
 });

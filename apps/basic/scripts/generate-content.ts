@@ -4,8 +4,6 @@ import { createContentProcessor } from "@acdh-oeaw/content-lib";
 import { log } from "@acdh-oeaw/lib";
 import * as v from "valibot";
 
-import { config } from "@/lib/content/config";
-
 const positionalArgsSchema = v.optional(v.picklist(["build", "watch"]), "build");
 
 const formatters = {
@@ -16,7 +14,9 @@ async function generate(): Promise<void> {
 	const { positionals } = parseArgs({ allowPositionals: true });
 	const mode = v.parse(positionalArgsSchema, positionals.at(0));
 
-	const processor = await createContentProcessor(config);
+	const processor = await createContentProcessor({
+		configFilePath: "./lib/content/config",
+	});
 
 	async function build() {
 		log.info("Processing...");
