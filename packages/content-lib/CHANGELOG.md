@@ -1,5 +1,14 @@
 # @acdh-oeaw/content-lib
 
+## 0.1.1
+
+### Patch Changes
+
+- [#29](https://github.com/acdh-oeaw/content-lib/pull/29)
+  [`fa2cb60`](https://github.com/acdh-oeaw/content-lib/commit/fa2cb60256e481f2643234d5dc86a6034a7f616f)
+  Thanks [@stefanprobst](https://github.com/stefanprobst)! - ensure generated type names are
+  pascalcase
+
 ## 0.1.0
 
 ### Minor Changes
