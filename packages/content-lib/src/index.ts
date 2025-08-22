@@ -5,8 +5,9 @@ import * as path from "node:path";
 import { pathToFileURL } from "node:url";
 import { debuglog } from "node:util";
 
-import { addTrailingSlash, capitalize, log } from "@acdh-oeaw/lib";
+import { addTrailingSlash, log } from "@acdh-oeaw/lib";
 import * as watcher from "@parcel/watcher";
+import { pascalCase } from "change-case";
 import plimit from "p-limit";
 import pluralize from "pluralize";
 
@@ -255,7 +256,7 @@ function serialize(
 	files.set("index.js", result);
 
 	// eslint-disable-next-line import-x/no-named-as-default-member
-	const typeName = capitalize(pluralize.singular(collectionName));
+	const typeName = pascalCase(pluralize.singular(collectionName));
 
 	files.set(
 		"index.d.ts",
