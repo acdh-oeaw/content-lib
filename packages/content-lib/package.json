@@ -34,6 +34,7 @@
 	"dependencies": {
 		"@acdh-oeaw/lib": "catalog:",
 		"@parcel/watcher": "catalog:",
+		"change-case": "catalog:",
 		"p-limit": "catalog:",
 		"pluralize": "catalog:"
 	},
