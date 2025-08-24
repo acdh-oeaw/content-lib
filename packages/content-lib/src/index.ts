@@ -216,7 +216,7 @@ function serialize(
 
 			if (value instanceof JavaScriptImport) {
 				const hash = createContentHash(value.content);
-				const filePath = `./${hash}.js`;
+				const filePath = `./${hash}.jsx`;
 
 				debug(`Adding javascript import for "${filePath}".`);
 				const identifier = addImport(filePath);
