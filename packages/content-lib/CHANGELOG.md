@@ -1,5 +1,13 @@
 # @acdh-oeaw/content-lib
 
+## 0.1.2
+
+### Patch Changes
+
+- [#32](https://github.com/acdh-oeaw/content-lib/pull/32)
+  [`f7ced24`](https://github.com/acdh-oeaw/content-lib/commit/f7ced2401e37ff296806f4e345f56dc4a5fb95f6)
+  Thanks [@stefanprobst](https://github.com/stefanprobst)! - always save js module as .jsx file
+
 ## 0.1.1
 
 ### Patch Changes
