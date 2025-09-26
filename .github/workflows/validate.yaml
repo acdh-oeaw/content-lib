@@ -64,4 +64,5 @@ jobs:
     # https://docs.github.com/en/actions/using-workflows/reusing-workflows#access-and-permissions
     permissions:
       contents: write
+      id-token: write
       pull-requests: write
