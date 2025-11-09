@@ -1,5 +1,14 @@
 # @acdh-oeaw/content-lib
 
+## 0.1.3
+
+### Patch Changes
+
+- [#38](https://github.com/acdh-oeaw/content-lib/pull/38)
+  [`bb0e824`](https://github.com/acdh-oeaw/content-lib/commit/bb0e8241189d93af0c1c87bfe571ad0943670cc9)
+  Thanks [@stefanprobst](https://github.com/stefanprobst)! - distribute union type in transform
+  function return type
+
 ## 0.1.2
 
 ### Patch Changes
