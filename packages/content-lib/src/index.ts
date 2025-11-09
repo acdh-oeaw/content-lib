@@ -154,15 +154,17 @@ export type GetCollection<TConfig extends ContentConfig, TName extends string> =
 type Simplify<T> = { [K in keyof T]: T[K] } & {};
 
 type Replace<T> = {
-	[K in keyof T]: T[K] extends JavaScriptImport<infer U>
-		? U
-		: T[K] extends JsonImport<infer U>
+	[K in keyof T]: T[K] extends infer V
+		? V extends JavaScriptImport<infer U>
 			? U
-			: T[K] extends ImportDeclaration<infer U>
+			: V extends JsonImport<infer U>
 				? U
-				: T[K] extends object
-					? Simplify<Replace<T[K]>>
-					: T[K];
+				: V extends ImportDeclaration<infer U>
+					? U
+					: V extends object
+						? Simplify<Replace<V>>
+						: V
+		: never;
 };
 
 export type CollectionEntry<TCollection extends Collection> = Simplify<{
