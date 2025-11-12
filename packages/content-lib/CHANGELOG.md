@@ -1,5 +1,14 @@
 # @acdh-oeaw/content-lib
 
+## 0.1.4
+
+### Patch Changes
+
+- [#41](https://github.com/acdh-oeaw/content-lib/pull/41)
+  [`c87c80f`](https://github.com/acdh-oeaw/content-lib/commit/c87c80f2aab08a2a667f0cb34790552397be8021)
+  Thanks [@stefanprobst](https://github.com/stefanprobst)! - pass current collection to transform
+  context
+
 ## 0.1.3
 
 ### Patch Changes
