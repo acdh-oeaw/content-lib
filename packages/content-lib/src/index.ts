@@ -51,6 +51,7 @@ interface CollectionItem {
 }
 
 interface TransformContext {
+	collection: Collection;
 	collections: Array<Collection>;
 	createImportDeclaration: <T>(path: string) => ImportDeclaration<T>;
 	createJavaScriptImport: <T>(content: string) => JavaScriptImport<T>;
@@ -324,7 +325,7 @@ export async function createContentProcessor(
 
 	const collections: Array<Collection> = [];
 
-	const context: TransformContext = {
+	const context = {
 		collections,
 		createImportDeclaration,
 		createJavaScriptImport,
@@ -389,7 +390,7 @@ export async function createContentProcessor(
 				}
 
 				// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-				const document = await collection.transform(content, item, context);
+				const document = await collection.transform(content, item, { ...context, collection });
 				// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 				collection.data.get(id)!.document = document;
 
