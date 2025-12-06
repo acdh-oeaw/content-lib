@@ -6,10 +6,10 @@ import nodeConfig from "@acdh-oeaw/eslint-config-node";
 import playwrightConfig from "@acdh-oeaw/eslint-config-playwright";
 import reactConfig from "@acdh-oeaw/eslint-config-react";
 import tailwindConfig from "@acdh-oeaw/eslint-config-tailwindcss";
+import { defineConfig } from "eslint/config";
 import gitignore from "eslint-config-flat-gitignore";
-import { config } from "typescript-eslint";
 
-export default config(
+export default defineConfig(
 	gitignore({ strict: false }),
 	{ ignores: ["content/**", "public/**"] },
 	baseConfig,
@@ -31,7 +31,7 @@ export default config(
 			"@typescript-eslint/require-array-sort-compare": "error",
 			"@typescript-eslint/strict-boolean-expressions": "error",
 			"react/jsx-sort-props": ["error", { reservedFirst: true }],
-			"react-x/prefer-read-only-props": "error",
+			"@eslint-react/prefer-read-only-props": "error",
 		},
 	},
 	{

@@ -4,5 +4,5 @@
 	"compilerOptions": {
 		"declaration": false
 	},
-	"exclude": ["dist"]
+	"exclude": ["dist", "node_modules"]
 }

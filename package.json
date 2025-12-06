@@ -15,7 +15,7 @@
 		"ci:release": "changeset publish",
 		"ci:version": "changeset version && prettier \"**/CHANGELOG.md\" --write",
 		"format:check": "prettier . --cache --cache-location ./.prettiercache --check",
-		"format:fix": "prettier . --cache --cache-location ./.prettiercache --check --write",
+		"format:fix": "pnpm run format:check --write",
 		"lint:check": "turbo run lint:check",
 		"lint:fix": "turbo run lint:fix",
 		"prepare": "is-in-ci || simple-git-hooks",
@@ -37,10 +37,10 @@
 		"turbo": "catalog:",
 		"typescript": "catalog:"
 	},
-	"prettier": "@acdh-oeaw/prettier-config",
 	"lint-staged": {
 		"*": "prettier --cache --cache-location ./.prettiercache --ignore-unknown --write"
 	},
+	"prettier": "@acdh-oeaw/prettier-config",
 	"simple-git-hooks": {
 		"pre-commit": "pnpm exec lint-staged"
 	}
