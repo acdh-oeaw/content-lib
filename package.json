@@ -5,11 +5,11 @@
 	"devEngines": {
 		"runtime": {
 			"name": "node",
-			"version": ">= 22.18 < 23",
+			"version": "^24",
 			"onFail": "download"
 		}
 	},
-	"packageManager": "pnpm@10.15.0",
+	"packageManager": "pnpm@10.24.0",
 	"scripts": {
 		"build": "turbo run build",
 		"ci:release": "changeset publish",
@@ -31,7 +31,6 @@
 		"@playwright/test": "catalog:",
 		"is-in-ci": "catalog:",
 		"lint-staged": "catalog:",
-		"node": "catalog:",
 		"npm-run-all2": "catalog:",
 		"prettier": "catalog:",
 		"simple-git-hooks": "catalog:",
