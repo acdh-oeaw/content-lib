@@ -5,17 +5,17 @@
 	"devEngines": {
 		"runtime": {
 			"name": "node",
-			"version": ">= 22.18 < 23",
+			"version": "^24",
 			"onFail": "download"
 		}
 	},
-	"packageManager": "pnpm@10.15.0",
+	"packageManager": "pnpm@10.24.0",
 	"scripts": {
 		"build": "turbo run build",
 		"ci:release": "changeset publish",
 		"ci:version": "changeset version && prettier \"**/CHANGELOG.md\" --write",
 		"format:check": "prettier . --cache --cache-location ./.prettiercache --check",
-		"format:fix": "prettier . --cache --cache-location ./.prettiercache --check --write",
+		"format:fix": "pnpm run format:check --write",
 		"lint:check": "turbo run lint:check",
 		"lint:fix": "turbo run lint:fix",
 		"prepare": "is-in-ci || simple-git-hooks",
@@ -31,17 +31,16 @@
 		"@playwright/test": "catalog:",
 		"is-in-ci": "catalog:",
 		"lint-staged": "catalog:",
-		"node": "catalog:",
 		"npm-run-all2": "catalog:",
 		"prettier": "catalog:",
 		"simple-git-hooks": "catalog:",
 		"turbo": "catalog:",
 		"typescript": "catalog:"
 	},
-	"prettier": "@acdh-oeaw/prettier-config",
 	"lint-staged": {
 		"*": "prettier --cache --cache-location ./.prettiercache --ignore-unknown --write"
 	},
+	"prettier": "@acdh-oeaw/prettier-config",
 	"simple-git-hooks": {
 		"pre-commit": "pnpm exec lint-staged"
 	}

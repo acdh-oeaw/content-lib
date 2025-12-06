@@ -9,20 +9,20 @@
 	"devEngines": {
 		"runtime": {
 			"name": "node",
-			"version": ">= 22.18 < 23",
+			"version": "^24",
 			"onFail": "download"
 		}
 	},
-	"packageManager": "pnpm@10.15.0",
+	"packageManager": "pnpm@10.24.0",
 	"scripts": {
 		"app:build": "next build",
 		"app:dev": "next dev --turbopack",
 		"build": "run-s content:build app:build",
 		"dev": "concurrently --kill-others --names \"content,app\" --prefix-colors \"auto\" \"pnpm:content:dev\" \"pnpm:app:dev\"",
-		"content:build": "NODE_DEBUG=content-lib dotenv -c -- tsx --tsconfig ./scripts/tsconfig.json ./scripts/generate-content.ts build",
-		"content:dev": "NODE_DEBUG=content-lib dotenv -c -- tsx --tsconfig ./scripts/tsconfig.json ./scripts/generate-content.ts watch",
+		"content:build": "NODE_DEBUG=content-lib dotenv -c -- tsx ./scripts/generate-content.ts build",
+		"content:dev": "NODE_DEBUG=content-lib dotenv -c -- tsx ./scripts/generate-content.ts watch",
 		"format:check": "prettier . --cache --cache-location ./../../.prettiercache --check --ignore-path ./../../.gitignore  --ignore-path ./../../.prettierignore",
-		"format:fix": "prettier . --cache --cache-location ./../../.prettiercache --check --write --ignore-path ./../../.gitignore --ignore-path ./../../.prettierignore",
+		"format:fix": "pnpm run format:check --write",
 		"lint:check": "eslint .",
 		"lint:fix": "eslint . --fix",
 		"prepare": "run-s types:prepare",
@@ -63,7 +63,6 @@
 		"eslint-config-flat-gitignore": "catalog:",
 		"globals": "catalog:",
 		"is-in-ci": "catalog:",
-		"node": "catalog:",
 		"npm-run-all2": "catalog:",
 		"prettier": "catalog:",
 		"remark-gfm": "catalog:",
@@ -71,7 +70,6 @@
 		"to-vfile": "catalog:",
 		"tsx": "catalog:",
 		"typescript": "catalog:",
-		"typescript-eslint": "catalog:",
 		"vfile": "catalog:",
 		"vfile-matter": "catalog:"
 	},
