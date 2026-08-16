@@ -55,6 +55,7 @@ catalog:
   valibot: ^1.1.0
   vfile: ^6.0.3
   vfile-matter: ^5.0.1
+  vitest: ^4.1.10
 
 catalogMode: strict
 
