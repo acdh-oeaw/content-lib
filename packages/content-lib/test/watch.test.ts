@@ -368,6 +368,30 @@ describe("incremental regeneration", () => {
 		expect(modules.some(includes("The first post, B."))).toBe(false);
 	});
 
+	it("re-transforms a whole collection whose transform reads its own collection data", async () => {
+		const fixture = await createFixture({ readsOwnCollectionData: ["posts"] });
+		const processor = await fixture.createProcessor();
+
+		await processor.build();
+		await startWatching(fixture, processor);
+		await fixture.clearCalls();
+
+		await fixture.writeFile("content/posts/first-post.md", "The first post, edited.");
+
+		await waitFor(async () => {
+			return (await readCollectionModules(fixture, "posts")).some(includes("edited"));
+		}, "the edited item to be published");
+
+		await processor.idle();
+
+		/** Reading sibling items through `context.collection.data` disables reuse just the same. */
+		await expect(fixture.readCalls()).resolves.toEqual([
+			"read posts first-post",
+			"transform posts first-post",
+			"transform posts second-post",
+		]);
+	});
+
 	it("re-transforms a whole collection whose transform reads other collections", async () => {
 		const fixture = await createFixture({ readsOtherCollections: ["posts"] });
 		const processor = await fixture.createProcessor();

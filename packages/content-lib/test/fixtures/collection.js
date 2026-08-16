@@ -18,7 +18,12 @@ async function record(kind, name, id) {
 }
 
 export function createTestCollection(name, options = {}) {
-	const { readDelayMs = 0, readsOtherCollections = false, transformDelayMs = 0 } = options;
+	const {
+		readDelayMs = 0,
+		readsOtherCollections = false,
+		readsOwnCollectionData = false,
+		transformDelayMs = 0,
+	} = options;
 
 	return {
 		name,
@@ -42,6 +47,11 @@ export function createTestCollection(name, options = {}) {
 			if (readsOtherCollections) {
 				/** Reading another item's data has to disable reuse of this collection's results. */
 				void context.collections.length;
+			}
+
+			if (readsOwnCollectionData) {
+				/** Reading sibling items of the same collection has to disable reuse just the same. */
+				void context.collection.data.size;
 			}
 
 			/** Widens the window in which a generation can be superseded by a newer one. */

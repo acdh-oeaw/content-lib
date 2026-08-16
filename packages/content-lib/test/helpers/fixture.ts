@@ -28,6 +28,8 @@ export interface FixtureOptions {
 	readDelayMs?: number;
 	/** Collections whose `transform()` reads `context.collections`. */
 	readsOtherCollections?: Array<string>;
+	/** Collections whose `transform()` reads `context.collection.data`. */
+	readsOwnCollectionData?: Array<string>;
 	/** Artificial delay in `transform()`, to widen the window for superseding a generation. */
 	transformDelayMs?: number;
 }
@@ -85,16 +87,19 @@ function createConfigSource(
 	transformDelayMs: number,
 	readsOtherCollections: Array<string>,
 	readDelayMs: number,
+	readsOwnCollectionData: Array<string>,
 ): string {
 	return [
 		`import { createTestCollection } from "./collection.js";`,
 		"",
 		`const readsOtherCollections = ${JSON.stringify(readsOtherCollections)};`,
+		`const readsOwnCollectionData = ${JSON.stringify(readsOwnCollectionData)};`,
 		"",
 		`const collections = ${JSON.stringify(collectionNames)}.map((name) => {`,
 		`\treturn createTestCollection(name, {`,
 		`\t\treadDelayMs: ${JSON.stringify(readDelayMs)},`,
 		`\t\treadsOtherCollections: readsOtherCollections.includes(name),`,
+		`\t\treadsOwnCollectionData: readsOwnCollectionData.includes(name),`,
 		`\t\ttransformDelayMs: ${JSON.stringify(transformDelayMs)},`,
 		`\t});`,
 		`});`,
@@ -145,6 +150,7 @@ export async function createFixture(options: FixtureOptions = {}): Promise<Fixtu
 	const files = options.files ?? defaultFiles;
 	const readDelayMs = options.readDelayMs ?? 0;
 	const readsOtherCollections = options.readsOtherCollections ?? [];
+	const readsOwnCollectionData = options.readsOwnCollectionData ?? [];
 	const transformDelayMs = options.transformDelayMs ?? 0;
 
 	/** `fs.realpath` because `@parcel/watcher` reports realpaths, and macOS symlinks its temp dir. */
@@ -204,7 +210,13 @@ export async function createFixture(options: FixtureOptions = {}): Promise<Fixtu
 		async writeConfig(names, delayMs = transformDelayMs) {
 			await fs.writeFile(
 				path.join(directory, configFileName),
-				createConfigSource(names, delayMs, readsOtherCollections, readDelayMs),
+				createConfigSource(
+					names,
+					delayMs,
+					readsOtherCollections,
+					readDelayMs,
+					readsOwnCollectionData,
+				),
 				{
 					encoding: "utf-8",
 				},
