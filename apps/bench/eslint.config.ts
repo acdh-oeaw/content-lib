@@ -18,8 +18,8 @@ export default defineConfig(
 	tailwindConfig,
 	{
 		settings: {
-			tailwindcss: {
-				config: resolve("./styles/index.css"),
+			"better-tailwindcss": {
+				entryPoint: resolve("./styles/index.css"),
 			},
 		},
 	},
