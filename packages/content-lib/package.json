@@ -14,6 +14,11 @@
 			"name": "node",
 			"version": "^26",
 			"onFail": "download"
+		},
+		"packageManager": {
+			"name": "pnpm",
+			"version": "12.21.0",
+			"onFail": "download"
 		}
 	},
 	"packageManager": "pnpm@12.21.0",
@@ -26,10 +31,10 @@
 	},
 	"scripts": {
 		"build": "tsdown",
-		"format:check": "prettier . --cache --cache-location ./../../.prettiercache --check --ignore-path ./../../.gitignore  --ignore-path ./../../.prettierignore",
-		"format:fix": "pnpm run format:check --write",
-		"lint:check": "eslint .",
-		"lint:fix": "eslint . --fix",
+		"format:check": "oxfmt --check . --ignore-path ../../.gitignore",
+		"format:fix": "oxfmt --write . --ignore-path ../../.gitignore",
+		"lint:check": "oxlint .",
+		"lint:fix": "oxlint --fix .",
 		"prepublishOnly": "run-s build",
 		"types:check": "tsc --noEmit",
 		"test": "vitest run",
@@ -43,28 +48,13 @@
 		"pluralize": "catalog:"
 	},
 	"devDependencies": {
-		"@acdh-oeaw/eslint-config": "catalog:",
-		"@acdh-oeaw/eslint-config-node": "catalog:",
-		"@acdh-oeaw/prettier-config": "catalog:",
 		"@acdh-oeaw/tsconfig-lib": "catalog:",
 		"@arethetypeswrong/core": "catalog:",
 		"@types/node": "catalog:",
 		"@types/pluralize": "catalog:",
-		"eslint": "catalog:",
-		"eslint-config-flat-gitignore": "catalog:",
-		"globals": "catalog:",
 		"npm-run-all2": "catalog:",
-		"prettier": "catalog:",
 		"tsdown": "catalog:",
 		"typescript": "catalog:",
 		"vitest": "catalog:"
-	},
-	"lint-staged": {
-		"*.@(js|ts)": [
-			"eslint --fix",
-			"prettier --cache --cache-location ./../../.prettiercache --write"
-		],
-		"*.!(js|ts)": "prettier --cache --cache-location ./../../.prettiercache --ignore-unknown --write"
-	},
-	"prettier": "@acdh-oeaw/prettier-config"
+	}
 }

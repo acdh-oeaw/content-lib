@@ -36,5 +36,6 @@
 		"types:check": {
 			"dependsOn": ["^types:check"]
 		}
-	}
+	},
+	"globalDependencies": [".oxfmtrc.json", ".oxlintrc.json"]
 }
