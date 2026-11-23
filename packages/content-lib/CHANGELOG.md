@@ -1,5 +1,53 @@
 # @acdh-oeaw/content-lib
 
+## 0.2.0
+
+### Minor Changes
+
+- [#44](https://github.com/acdh-oeaw/content-lib/pull/44)
+  [`4f0f9eb`](https://github.com/acdh-oeaw/content-lib/commit/4f0f9ebba7b7397b13555eecbf201ce74660add1)
+  Thanks [@stefanprobst](https://github.com/stefanprobst)! - regenerate incrementally and publish
+  generated output atomically
+
+  - only re-read and re-transform items whose source file changed, instead of the whole corpus. a
+    transform which reads other items through `context.collections` or `context.collection.data` is
+    detected, and its collection keeps being transformed in full
+  - never delete the generated output root, and skip writing files whose content did not change, so
+    unchanged modules keep their modification time and do not invalidate bundler caches
+  - write content-hashed modules before the collection index which references them, and remove
+    obsolete modules only once the new index no longer points at them
+  - publish newly created items, which could previously be dropped: creating a file emits both a
+    "create" and an "update" event, and only the "update" event survived debouncing
+  - apply filesystem events to the collection they came from, instead of to whichever collection
+    happened to schedule the debounce timer
+  - serialize regenerations. a superseded regeneration could discard queued work belonging to the
+    one replacing it, leaving the watcher permanently unable to publish
+  - keep watching when a `read()` or `transform()` throws, and when applying a filesystem event
+    throws, instead of failing with an unhandled rejection. a `stat()` failure other than "not
+    found", such as `EACCES` or `ELOOP` on a watched path, previously terminated the process
+  - add `idle()`, which resolves once no regeneration is pending, and `close()`, which stops
+    watching and waits for an in-flight regeneration, so shutting down cannot leave a partially
+    written output tree behind
+
+### Patch Changes
+
+- [#47](https://github.com/acdh-oeaw/content-lib/pull/47)
+  [`ee34581`](https://github.com/acdh-oeaw/content-lib/commit/ee34581a432004fcf97f6687635e4e45cdc64f65)
+  Thanks [@stefanprobst](https://github.com/stefanprobst)! - Upgrade to TypeScript 7 and tsdown
+  0.23.7 for type checking and library builds. Replace Prettier and ESLint with Oxfmt and Oxlint,
+  and replace simple-git-hooks and lint-staged with Lefthook.
+
+  Update Turbo to 2.11.13, Playwright to 1.65.1, npm-run-all2 to 9.1.0, and the Changesets CLI to
+  3.0.3.
+
+  Update p-limit to 7.3.3 and Vitest to 5.1.1, and use Node.js 26 type definitions.
+
+  Declare pnpm 12.21.0 in `devEngines.packageManager` with automatic download across the workspace.
+
+- [#46](https://github.com/acdh-oeaw/content-lib/pull/46)
+  [`1718cc7`](https://github.com/acdh-oeaw/content-lib/commit/1718cc7c551ea2aba351f8f59886c51067fbad4d)
+  Thanks [@stefanprobst](https://github.com/stefanprobst)! - allow node 26 in `engines` field
+
 ## 0.1.4
 
 ### Patch Changes
