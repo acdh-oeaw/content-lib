@@ -59,15 +59,18 @@ catalog:
 
 catalogMode: strict
 
+# https://pnpm.io/settings#enginestrict
+engineStrict: true
+
 cleanupUnusedCatalogs: true
 
-onlyBuiltDependencies:
-  - '@parcel/watcher'
-  - '@tailwindcss/oxide'
-  - esbuild
-  - sharp
-  - simple-git-hooks
-  - unrs-resolver
+allowBuilds:
+  '@parcel/watcher': true
+  '@tailwindcss/oxide': true
+  esbuild: true
+  sharp: true
+  simple-git-hooks: true
+  unrs-resolver: true
 
 shellEmulator: true
 
