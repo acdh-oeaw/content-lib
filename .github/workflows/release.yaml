@@ -17,18 +17,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      # Installs pnpm and the node.js version from `devEngines.runtime`.
+      - name: Setup pnpm and Node.js
+        uses: pnpm/setup@v3
         with:
-          node-version: 22.x
-          cache: pnpm
-
-      # Ensure `npm` 11.5.1 or later is installed (which is needed for trusted publishing).
-      - name: Update npm
-        run: npm install -g npm@latest
+          cache: true
+          install: false
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
