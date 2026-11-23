@@ -1,5 +1,4 @@
 import "@/styles/index.css";
-
 import type { ReactNode } from "react";
 
 interface RootLayoutProps extends LayoutProps<"/"> {}

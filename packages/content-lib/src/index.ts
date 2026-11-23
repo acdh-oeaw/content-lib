@@ -104,9 +104,9 @@ interface TransformContext {
 
 export interface CollectionConfig<
 	TCollectionName extends string = string,
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	// oxlint-disable-next-line typescript/no-explicit-any
 	TCollectionItemContent = any,
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	// oxlint-disable-next-line typescript/no-explicit-any
 	TCollectionDocument = any,
 > {
 	name: TCollectionName;
@@ -227,7 +227,7 @@ const re = new RegExp(`"(${prefix}\\d+)"`, "g");
 const collectionIndexFileNames = new Set(["index.js", "index.d.ts"]);
 
 function serialize(
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	// oxlint-disable-next-line typescript/no-explicit-any
 	value: Map<string, any>,
 	contentProcessorConfigFilePath: string,
 	collectionName: string,
@@ -286,7 +286,7 @@ function serialize(
 				return identifier;
 			}
 
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-return
+			// oxlint-disable-next-line typescript/no-unsafe-return
 			return value;
 		},
 		2,
@@ -305,7 +305,6 @@ function serialize(
 
 	files.set("index.js", result);
 
-	// eslint-disable-next-line import-x/no-named-as-default-member
 	const typeName = pascalCase(pluralize.singular(collectionName));
 
 	files.set(
@@ -330,7 +329,7 @@ function serialize(
 
 interface Collection extends CollectionConfig {
 	absoluteDirectoryPath: string;
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	// oxlint-disable-next-line typescript/no-explicit-any
 	data: Map<CollectionItem["id"], { item: CollectionItem; content: any; document: any }>; // TODO: revisit
 	/**
 	 * Whether this collection's `transform()` has been observed reading the data of another item,
@@ -447,7 +446,7 @@ export async function createContentProcessor(
 						markDataDependency();
 					}
 
-					// eslint-disable-next-line @typescript-eslint/no-unsafe-return
+					// oxlint-disable-next-line typescript/no-unsafe-return
 					return Reflect.get(target, property, receiver);
 				},
 			}),
@@ -456,7 +455,7 @@ export async function createContentProcessor(
 				get(target, property, receiver) {
 					markDataDependency();
 
-					// eslint-disable-next-line @typescript-eslint/no-unsafe-return
+					// oxlint-disable-next-line typescript/no-unsafe-return
 					return Reflect.get(target, property, receiver);
 				},
 			}),
@@ -511,7 +510,7 @@ export async function createContentProcessor(
 				}
 
 				// TODO: skip item when `read()` returns `null`?
-				// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+				// oxlint-disable-next-line typescript/no-unsafe-assignment
 				const content = await collection.read(entry.item);
 
 				/**
@@ -524,7 +523,7 @@ export async function createContentProcessor(
 					return;
 				}
 
-				// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+				// oxlint-disable-next-line typescript/no-unsafe-assignment
 				entry.content = content;
 
 				debug(`- Read item "${id}".`);
@@ -553,7 +552,7 @@ export async function createContentProcessor(
 					return;
 				}
 
-				// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+				// oxlint-disable-next-line typescript/no-unsafe-assignment
 				const document = await collection.transform(entry.content, entry.item, transformContext);
 
 				/** As with reading: the item may have been replaced while it was being transformed. */
@@ -562,7 +561,7 @@ export async function createContentProcessor(
 					return;
 				}
 
-				// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+				// oxlint-disable-next-line typescript/no-unsafe-assignment
 				entry.document = document;
 
 				debug(`- Transformed item "${id}".`);
@@ -683,8 +682,6 @@ export async function createContentProcessor(
 			 * deleted must not survive from a previous build.
 			 */
 			collection.data.clear();
-
-			// eslint-disable-next-line n/no-unsupported-features/node-builtins
 			for await (const filePath of fs.glob(collection.include, {
 				cwd: collection.directory,
 				exclude: collection.exclude,
@@ -898,7 +895,6 @@ export async function createContentProcessor(
 
 						if (
 							collection.include.some((pattern) => {
-								// eslint-disable-next-line n/no-unsupported-features/node-builtins
 								return path.matchesGlob(relativeFilePath, pattern);
 							})
 						) {
@@ -918,7 +914,7 @@ export async function createContentProcessor(
 						clearTimeout(timer);
 					}
 
-					// eslint-disable-next-line @typescript-eslint/no-misused-promises
+					// oxlint-disable-next-line typescript/no-misused-promises
 					timer = setTimeout(async () => {
 						const events = batch;
 						batch = new Map();
